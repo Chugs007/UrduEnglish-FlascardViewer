@@ -146,7 +146,7 @@ namespace FlashCardsViewer
             FlashCard fc = new FlashCard();
             fc.UrduPhrase = urduWord;
             fc.EnglishPhrase = englishWord;
-            dict.Add(new KeyValuePair() { Key = flashCardNumber + handle++, Value = fc });
+            dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
                
         }
 
