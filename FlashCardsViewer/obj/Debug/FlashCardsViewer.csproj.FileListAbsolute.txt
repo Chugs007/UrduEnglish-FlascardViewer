@@ -30,7 +30,6 @@ C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsV
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.pdb
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.exe
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.pdb
-C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csprojResolveAssemblyReference.cache
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\AddWindow.baml
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\EditWindow.baml
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\MainWindow.baml
@@ -42,3 +41,4 @@ C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsV
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.g.resources
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.Properties.Resources.resources
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csproj.GenerateResource.Cache
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.exe.config

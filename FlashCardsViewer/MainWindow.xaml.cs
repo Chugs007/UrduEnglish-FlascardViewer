@@ -44,12 +44,12 @@ namespace FlashCardsViewer
         {
             InitializeComponent();            
             dict = new ObservableCollection<KeyValuePair>();        
-            listBoxFlashcards.DataContext = dict;            
+            listBoxFlashcards.DataContext = dict;           
         }
       
         ~MainWindow()
         {
-            using (StreamWriter sw = new StreamWriter(@"C:\Users\Omar\Desktop\urdu_to_english.csv"))          
+            using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))          
             {
                 sw.WriteLine("Urdu, English");
                 foreach (KeyValuePair kvp in dict)
@@ -63,7 +63,7 @@ namespace FlashCardsViewer
         {
             try
             {
-                TextFieldParser parser = new TextFieldParser(@"C:\Users\Omar\Desktop\urdu_to_english.csv");
+                TextFieldParser parser = new TextFieldParser(Properties.Settings.Default.filePath);
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
                 parser.ReadFields(); //skips first line
