@@ -42,3 +42,20 @@ C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsV
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.Properties.Resources.resources
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csproj.GenerateResource.Cache
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.exe.config
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.exe.config
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.exe
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.pdb
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.exe
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.pdb
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csprojResolveAssemblyReference.cache
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\AddWindow.baml
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\EditWindow.baml
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\MainWindow.baml
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\AddWindow.g.cs
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\EditWindow.g.cs
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\MainWindow.g.cs
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\App.g.cs
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer_MarkupCompile.cache
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.g.resources
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.Properties.Resources.resources
+C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csproj.GenerateResource.Cache
