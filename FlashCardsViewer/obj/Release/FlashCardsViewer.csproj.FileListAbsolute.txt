@@ -1,0 +1,16 @@
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Release\FlashCardsViewer.exe
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Release\FlashCardsViewer.pdb
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\AddWindow.baml
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\EditWindow.baml
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\MainWindow.baml
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\AddWindow.g.cs
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\EditWindow.g.cs
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\MainWindow.g.cs
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\App.g.cs
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer_MarkupCompile.cache
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.g.resources
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.Properties.Resources.resources
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.csproj.GenerateResource.Cache
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.exe
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.pdb
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Release\FlashCardsViewer.exe.config
