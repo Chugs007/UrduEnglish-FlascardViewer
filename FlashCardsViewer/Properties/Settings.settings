@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="filePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\urdu_to_english.csv</Value>
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

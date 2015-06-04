@@ -25,7 +25,7 @@ namespace FlashCardsViewer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\urdu_to_english.csv")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string filePath {
             get {
                 return ((string)(this["filePath"]));
