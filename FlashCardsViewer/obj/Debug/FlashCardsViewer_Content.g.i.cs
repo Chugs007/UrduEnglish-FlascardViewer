@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/pakistan_round_icon_640.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/pakistan_splash2.jpg")]
 
 

@@ -37,24 +37,71 @@ namespace FlashCardsViewer
         private int handle = 0; //represents position inside collection
         private ObservableCollection<KeyValuePair> dict; //collection of key values
         private const string flashCardNotSelected = "No Flash Card Selected!!";
-        private string defaultFilePath=@"C:\Users\"+Environment.UserName+@"\Desktop\urdu_to_english.csv";
+        private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
+        private bool exists = false;
+        
         #endregion
         
 
         public MainWindow()
         {
+            SplashScreen sc = new SplashScreen(@"Resources\pakistan_splash2.jpg");
+            sc.Show(false);
+            sc.Close(TimeSpan.FromSeconds(5));
+            System.Threading.Thread.Sleep(5000);
+            sc = null;
             InitializeComponent();            
             dict = new ObservableCollection<KeyValuePair>();        
             listBoxFlashcards.DataContext = dict;
             if (string.IsNullOrEmpty(Properties.Settings.Default.filePath))
                 Properties.Settings.Default.filePath = defaultFilePath;
             Properties.Settings.Default.Save();
-
+            exists = File.Exists(Properties.Settings.Default.filePath);
+            if (!File.Exists(Properties.Settings.Default.filePath))
+            {               
+                using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))
+                {
+                    sw.WriteLine("Urdu, English");
+                    sw.WriteLine("ab" + ", " + "now");
+                    sw.WriteLine("in" + ", " + "those");
+                    sw.WriteLine("aisa" + ", " + "such");
+                    sw.WriteLine("amir" + ", " + "rich");
+                    sw.WriteLine("aur" + ", " + "and");
+                    sw.WriteLine("mera" + ", " + "my");
+                    sw.WriteLine("muhjhe" + ", " + "me");
+                    sw.WriteLine("eik" + ", " + "one");
+                    sw.WriteLine("nam" + ", " + "name");
+                    sw.WriteLine("batie" + ", " + "sit down");
+                    sw.WriteLine("kahan" + ", " + "where");
+                    sw.WriteLine("hamara" + ", " + "our");
+                    sw.WriteLine("ham" + ", " + "we");
+                    sw.WriteLine("voh" + ", " + "he/she/it");
+                    sw.WriteLine("yih" + ", " + "he/she/it");
+                    sw.WriteLine("hal" + ", " + "condition");
+                    sw.WriteLine("hai" + ", " + "is");
+                    sw.WriteLine("larka" + ", " + "boy");
+                    sw.WriteLine("larkee" + ", " + "girl");
+                    sw.WriteLine("bachay" + ", " + "children");
+                    sw.WriteLine("bacha" + ", " + "child");
+                    sw.WriteLine("tum" + ", " + "you(informal)");
+                    sw.WriteLine("ap" + ", " + "you(formal)");
+                    sw.WriteLine("kitna" + ", " + "how many");
+                    sw.WriteLine("sar" + ", " + "head");
+                    sw.WriteLine("sayhat" + ", " + "health");
+                    sw.WriteLine("kab" + ", " + "when");
+                    sw.WriteLine("koi" + ", " + "someone");
+                    sw.WriteLine("sunna" + ", " + "hear");
+                    sw.WriteLine("suna" + ", " + "heard");
+                    sw.WriteLine("batana" + ", " + "tell");
+                    sw.WriteLine("naachna" + ", " + "dance");
+                    sw.WriteLine("bemar" + ", " + "sick");
+                    sw.WriteLine("kuch" + ", " + "some/something");         
+                }            
+            }
         }
-      
+
         ~MainWindow()
-        {
-         
+        {         
             using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))          
             {
                 sw.WriteLine("Urdu, English");
@@ -68,11 +115,12 @@ namespace FlashCardsViewer
      
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            TextFieldParser parser;
             if (File.Exists(Properties.Settings.Default.filePath))
             {
                 try
                 {
-                    TextFieldParser parser = new TextFieldParser(Properties.Settings.Default.filePath);
+                    parser = new TextFieldParser(Properties.Settings.Default.filePath);
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");
                     parser.ReadFields(); //skips first line
@@ -87,24 +135,13 @@ namespace FlashCardsViewer
                 }
                 catch (Exception ex)
                 {
-<<<<<<< HEAD
-                    string[] phrases = parser.ReadFields();
-                    FlashCard fc = new FlashCard();
-                    fc.UrduPhrase = phrases[0];
-                    fc.EnglishPhrase = phrases[1];
-                    dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
-=======
                     MessageBox.Show(ex.Message);
->>>>>>> 5060d772b1e70b8e02a100317d766a0b65cb2d07
                 }
             }
             else
             {
-<<<<<<< HEAD
-                MessageBox.Show(ex.Message); 
-=======
+               
                 MessageBox.Show("File does not exist or invalid file path");
->>>>>>> 5060d772b1e70b8e02a100317d766a0b65cb2d07
             }
         }
 

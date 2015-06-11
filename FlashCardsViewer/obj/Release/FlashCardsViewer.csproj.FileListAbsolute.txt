@@ -14,3 +14,4 @@ C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsV
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.exe
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.pdb
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Release\FlashCardsViewer.exe.config
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.csprojResolveAssemblyReference.cache
