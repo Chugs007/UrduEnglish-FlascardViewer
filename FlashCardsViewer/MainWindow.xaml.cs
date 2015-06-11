@@ -34,7 +34,7 @@ namespace FlashCardsViewer
         #region private variables
         private const string flashCardNumber = "FlashCard #"; //represents a flashcard by what number it is
         private bool urduSide = true; //denotes whether the urdu side is showing or english side is
-        private int handle = 1; //represents position inside collection
+        private int handle = 0; //represents position inside collection
         private ObservableCollection<KeyValuePair> dict; //collection of key values
         private const string flashCardNotSelected = "No Flash Card Selected!!";
         #endregion
@@ -73,12 +73,12 @@ namespace FlashCardsViewer
                     FlashCard fc = new FlashCard();
                     fc.UrduPhrase = phrases[0];
                     fc.EnglishPhrase = phrases[1];
-                    dict.Add(new KeyValuePair() { Key = flashCardNumber + handle++, Value = fc });
+                    dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message); 
             }
         }
 
