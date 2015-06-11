@@ -37,6 +37,7 @@ namespace FlashCardsViewer
         private int handle = 0; //represents position inside collection
         private ObservableCollection<KeyValuePair> dict; //collection of key values
         private const string flashCardNotSelected = "No Flash Card Selected!!";
+        private string defaultFilePath=@"C:\Users\"+Environment.UserName+@"\Desktop\urdu_to_english.csv";
         #endregion
         
 
@@ -44,11 +45,16 @@ namespace FlashCardsViewer
         {
             InitializeComponent();            
             dict = new ObservableCollection<KeyValuePair>();        
-            listBoxFlashcards.DataContext = dict;           
+            listBoxFlashcards.DataContext = dict;
+            if (string.IsNullOrEmpty(Properties.Settings.Default.filePath))
+                Properties.Settings.Default.filePath = defaultFilePath;
+            Properties.Settings.Default.Save();
+
         }
       
         ~MainWindow()
         {
+         
             using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))          
             {
                 sw.WriteLine("Urdu, English");
@@ -57,28 +63,48 @@ namespace FlashCardsViewer
                     sw.WriteLine(kvp.Value.UrduPhrase + ", " + kvp.Value.EnglishPhrase);
                 }
             }
+           
         }
      
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
+            if (File.Exists(Properties.Settings.Default.filePath))
             {
-                TextFieldParser parser = new TextFieldParser(Properties.Settings.Default.filePath);
-                parser.TextFieldType = FieldType.Delimited;
-                parser.SetDelimiters(",");
-                parser.ReadFields(); //skips first line
-                while (!parser.EndOfData)
+                try
                 {
+                    TextFieldParser parser = new TextFieldParser(Properties.Settings.Default.filePath);
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    parser.ReadFields(); //skips first line
+                    while (!parser.EndOfData)
+                    {
+                        string[] phrases = parser.ReadFields();
+                        FlashCard fc = new FlashCard();
+                        fc.UrduPhrase = phrases[0];
+                        fc.EnglishPhrase = phrases[1];
+                        dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
+                    }
+                }
+                catch (Exception ex)
+                {
+<<<<<<< HEAD
                     string[] phrases = parser.ReadFields();
                     FlashCard fc = new FlashCard();
                     fc.UrduPhrase = phrases[0];
                     fc.EnglishPhrase = phrases[1];
                     dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
+=======
+                    MessageBox.Show(ex.Message);
+>>>>>>> 5060d772b1e70b8e02a100317d766a0b65cb2d07
                 }
             }
-            catch (Exception ex)
+            else
             {
+<<<<<<< HEAD
                 MessageBox.Show(ex.Message); 
+=======
+                MessageBox.Show("File does not exist or invalid file path");
+>>>>>>> 5060d772b1e70b8e02a100317d766a0b65cb2d07
             }
         }
 
@@ -171,6 +197,8 @@ namespace FlashCardsViewer
                 dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = new FlashCard() { UrduPhrase = kvp.Value.UrduPhrase, EnglishPhrase = kvp.Value.EnglishPhrase } });
                 
             }
+            this.txtBlockCardData.Visibility = Visibility.Hidden;
+            this.flashCardBorder.Visibility = Visibility.Hidden;           
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
