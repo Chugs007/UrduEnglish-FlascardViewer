@@ -47,8 +47,8 @@ namespace FlashCardsViewer
         {
             SplashScreen sc = new SplashScreen(@"Resources\pakistan_splash2.jpg");
             sc.Show(false);
-            sc.Close(TimeSpan.FromSeconds(5));
-            System.Threading.Thread.Sleep(5000);
+            sc.Close(TimeSpan.FromSeconds(3));
+            System.Threading.Thread.Sleep(3000);
             sc = null;
             InitializeComponent();            
             dict = new ObservableCollection<KeyValuePair>();        
@@ -274,6 +274,42 @@ namespace FlashCardsViewer
                 speech.Speak(kvp.Value.UrduPhrase);
             else
                 speech.Speak(kvp.Value.EnglishPhrase);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                txtBlockCardData.FontSize = 150;
+                //ShowFlashButton.Height = 50;
+                //ShowFlashButton.Width = 180;
+                AddCardButton.Height = 50;
+                AddCardButton.Width = 180;
+                DeleteButton.Height = 50;
+                DeleteButton.Width = 180;
+                FlipButton.Height = 50;
+                FlipButton.Width = 180;
+                EditButton.Height = 50;
+                EditButton.Width = 180;
+                HearButton.Height = 50;
+                HearButton.Width = 180;
+            }
+            else
+            {
+                txtBlockCardData.FontSize = 70;
+                //ShowFlashButton.Height = 25;
+                //ShowFlashButton.Width = 90;
+                AddCardButton.Height = 25;
+                AddCardButton.Width = 90;
+                DeleteButton.Height = 25;
+                DeleteButton.Width = 90;
+                FlipButton.Height = 25;
+                FlipButton.Width = 90;
+                EditButton.Height = 25;
+                EditButton.Width = 90;
+                HearButton.Height = 25;
+                HearButton.Width = 90;
+            }
         }
 
     }

@@ -1,51 +1,49 @@
 ﻿<Window x:Class="FlashCardsViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Urdu English Flashcard Viewer" Height="350" Width="525" Loaded="Window_Loaded"
-        Icon="Resources\pakistan_round_icon_640.ico" >
+        Title="Urdu English Flashcard Viewer" MinHeight="350" MinWidth="525" Height="375" Width="625" Loaded="Window_Loaded"
+        Icon="Resources\pakistan_round_icon_640.ico"  SizeChanged="Window_SizeChanged">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Image x:Key="bgdImage" Source="Resources/Pakistan_Background1.jpg"></Image>
+        </Grid.Resources>
+     
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.Background>
+                <ImageBrush  ImageSource="Resources/Pakistan_Background1.jpg"></ImageBrush>
+            </Grid.Background>
+        </Grid>      
+        <Grid Grid.Row="0" Grid.Column="1">                      
+            <StackPanel >               
+                <Border x:Name="flashCardBorder"  Grid.Column="1"  MinHeight="100" MinWidth="200" Height="auto" Width="auto" Visibility="Hidden">
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Border x:Name="flashCardBorder" BorderBrush="Black" BorderThickness="3" Grid.Column="0" MinHeight="100" MinWidth="200" Height="auto" Width="auto" Visibility="Hidden">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-                    <TextBlock x:Name="txtBlockCardData" TextWrapping="Wrap"  FontSize="50" HorizontalAlignment="Center"  Margin="10,5,10,0" Visibility="Hidden"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                    <TextBlock x:Name="txtBlockCardData" TextWrapping="Wrap" Foreground="NavajoWhite"  FontSize="70" HorizontalAlignment="Center"  Margin="10,5,10,0" Visibility="Hidden"/>
                 </ScrollViewer>
             </Border>
-
-            <ListBox Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="listBoxFlashcards"  VirtualizingStackPanel.IsVirtualizing="true" SelectionChanged="listBoxFlashcards_SelectionChanged" ItemsSource="{Binding}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Key}"></TextBlock>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-       
+            </StackPanel>         
         </Grid>
-        <Grid Grid.Row="1" Margin="0,20,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition Height="auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-                <ColumnDefinition Width="auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button Content="Showflashcard" Margin="10,0,0,0" Grid.Column="0" Height="25" Width="90" Click="Button_ShowFlashCard"></Button>
-            <Button Content="Add Card" Grid.Column="1" Margin="10,0,0,0" Height="25" Width="90" Click="Button_AddFlashCard"></Button>
-            <Button Content="Delete" Grid.Column="2" Margin="10,0,0,0" Height="25" Width="90" Click="Button_DeleteFlascard"></Button>
-            <Button Content="Edit" Grid.Column="3" Margin="10,0,0,0" Height="25" Width="90" Click="Button_Edit"></Button>
-            <Button Margin="10,10,0,0" Content="Flip Card" Grid.Column="0" Grid.Row="1" Height="25" Width="90" Click="Button_FlipFlashCard"></Button>
-            <Button Content="Hear Phrase" Grid.Column="1"  Height="25" Width="90"  Grid.Row="1" Margin="10,10,0,0" Click="Button_Speak"/>
-        </Grid>
+        <ListBox Grid.Column="2"   ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="listBoxFlashcards"  VirtualizingStackPanel.IsVirtualizing="true" SelectionChanged="listBoxFlashcards_SelectionChanged" ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Key}"></TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>                                
+            <StackPanel  Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <!--Button Content="Showflashcard" x:Name="ShowFlashButton"  Grid.Column="0" MinHeight="30" MinWidth="90" Click="Button_ShowFlashCard">-->
+                <Button Content="Add Card" Grid.Column="1" x:Name="AddCardButton"  MinHeight="40" MinWidth="120" Click="Button_AddFlashCard"></Button>
+            <Button Content="Delete" Grid.Column="2" x:Name="DeleteButton"  MinHeight="40" MinWidth="120" Click="Button_DeleteFlascard"></Button>
+            <Button Content="Edit" Grid.Column="3" x:Name="EditButton"  MinHeight="40" MinWidth="120" Click="Button_Edit"></Button>
+            <Button  Content="Flip Card" x:Name="FlipButton" Grid.Column="0" Grid.Row="0" MinHeight="40" MinWidth="120" Click="Button_FlipFlashCard"></Button>
+            <Button Content="Hear Phrase" Grid.Column="1" x:Name="HearButton"  MinHeight="40" MinWidth="120"  Grid.Row="0" Click="Button_Speak"/>
+            </StackPanel>
+      
     </Grid>
 </Window>
