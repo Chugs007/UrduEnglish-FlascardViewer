@@ -278,38 +278,46 @@ namespace FlashCardsViewer
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.WindowState == WindowState.Maximized)
-            {
-                txtBlockCardData.FontSize = 150;
-                //ShowFlashButton.Height = 50;
-                //ShowFlashButton.Width = 180;
-                AddCardButton.Height = 50;
-                AddCardButton.Width = 180;
-                DeleteButton.Height = 50;
-                DeleteButton.Width = 180;
-                FlipButton.Height = 50;
-                FlipButton.Width = 180;
-                EditButton.Height = 50;
-                EditButton.Width = 180;
-                HearButton.Height = 50;
-                HearButton.Width = 180;
-            }
-            else
-            {
-                txtBlockCardData.FontSize = 70;
-                //ShowFlashButton.Height = 25;
-                //ShowFlashButton.Width = 90;
-                AddCardButton.Height = 25;
-                AddCardButton.Width = 90;
-                DeleteButton.Height = 25;
-                DeleteButton.Width = 90;
-                FlipButton.Height = 25;
-                FlipButton.Width = 90;
-                EditButton.Height = 25;
-                EditButton.Width = 90;
-                HearButton.Height = 25;
-                HearButton.Width = 90;
-            }
+            //    Style s = gridUIScreen.FindResource("ButtonStyle") as Style;
+            //if (this.WindowState == WindowState.Maximized)
+            //{
+            //    txtBlockCardData.FontSize = 150;
+                
+            //    AddCardButton.Height = 80;
+            //    AddCardButton.Width = 240;
+            //    DeleteButton.Height = 80;
+            //    DeleteButton.Width = 240;
+            //    FlipButton.Height = 80;
+            //    FlipButton.Width = 240;
+            //    EditButton.Height = 80;
+            //    EditButton.Width = 240;
+            //    HearButton.Height = 80;
+            //    HearButton.Width = 240;
+            //    AddCardButton.FontSize = 18;
+            //    DeleteButton.FontSize = 18;
+            //    FlipButton.FontSize = 18;
+            //    EditButton.FontSize = 18;
+            //    HearButton.FontSize = 18;
+            //}
+            //else
+            //{
+            //    txtBlockCardData.FontSize = 70;
+            //    AddCardButton.FontSize = 12;
+            //    DeleteButton.FontSize = 12;
+            //    FlipButton.FontSize = 12;
+            //    EditButton.FontSize = 12;
+            //    HearButton.FontSize = 12;
+            //    AddCardButton.Height = 40;
+            //    AddCardButton.Width = 120;
+            //    DeleteButton.Height = 40;
+            //    DeleteButton.Width = 120;
+            //    FlipButton.Height = 40;
+            //    FlipButton.Width = 120;
+            //    EditButton.Height = 40;
+            //    EditButton.Width = 120;
+            //    HearButton.Height = 40;
+            //    HearButton.Width = 120;
+            //}
         }
 
     }

@@ -3,15 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Urdu English Flashcard Viewer" MinHeight="350" MinWidth="525" Height="375" Width="625" Loaded="Window_Loaded"
         Icon="Resources\pakistan_round_icon_640.ico"  SizeChanged="Window_SizeChanged">
-    <Grid>
+    <Grid x:Name="gridUIScreen">
         <Grid.Resources>
             <Image x:Key="bgdImage" Source="Resources/Pakistan_Background1.jpg"></Image>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="MinHeight" Value="40"></Setter>
+                <Setter Property="MinWidth" Value="100"></Setter>
+                <Setter Property="Background" Value="Beige"></Setter>
+            </Style>
         </Grid.Resources>
      
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto" ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
@@ -36,13 +41,13 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>                                
-            <StackPanel  Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel  Orientation="Vertical" Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Top" Name="stackPanelButtons"  >
             <!--Button Content="Showflashcard" x:Name="ShowFlashButton"  Grid.Column="0" MinHeight="30" MinWidth="90" Click="Button_ShowFlashCard">-->
-                <Button Content="Add Card" Grid.Column="1" x:Name="AddCardButton"  MinHeight="40" MinWidth="120" Click="Button_AddFlashCard"></Button>
-            <Button Content="Delete" Grid.Column="2" x:Name="DeleteButton"  MinHeight="40" MinWidth="120" Click="Button_DeleteFlascard"></Button>
-            <Button Content="Edit" Grid.Column="3" x:Name="EditButton"  MinHeight="40" MinWidth="120" Click="Button_Edit"></Button>
-            <Button  Content="Flip Card" x:Name="FlipButton" Grid.Column="0" Grid.Row="0" MinHeight="40" MinWidth="120" Click="Button_FlipFlashCard"></Button>
-            <Button Content="Hear Phrase" Grid.Column="1" x:Name="HearButton"  MinHeight="40" MinWidth="120"  Grid.Row="0" Click="Button_Speak"/>
+                <Button Content="Add Card" Grid.Column="1" x:Name="AddCardButton" Style="{StaticResource ButtonStyle}"   Click="Button_AddFlashCard"></Button>
+            <Button Content="Delete"  Grid.Column="2" x:Name="DeleteButton" Style="{StaticResource ButtonStyle}" Click="Button_DeleteFlascard"></Button>
+            <Button Content="Edit" Grid.Column="3" x:Name="EditButton"  Style="{StaticResource ButtonStyle}" Click="Button_Edit"></Button>
+            <Button  Content="Flip Card" x:Name="FlipButton" Grid.Column="0" Grid.Row="0" Style="{StaticResource ButtonStyle}" Click="Button_FlipFlashCard"></Button>
+            <Button Content="Hear Phrase" Grid.Column="1" x:Name="HearButton"  Style="{StaticResource ButtonStyle}" Grid.Row="0" Click="Button_Speak"/>
             </StackPanel>
       
     </Grid>
