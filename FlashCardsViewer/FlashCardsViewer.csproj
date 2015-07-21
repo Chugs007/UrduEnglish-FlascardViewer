@@ -113,19 +113,18 @@
     <Resource Include="Resources\pakistan_round_icon_640.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\pakistan_splash.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\pakistan_splash2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Pakistan_Background1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\greenBackground.png" />
+    <Resource Include="Resources\darkGreenBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\darkGreenBackground.jpg" />
+    <Content Include="Resources\National-Anthem-Pakistan.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

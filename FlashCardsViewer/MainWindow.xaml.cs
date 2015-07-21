@@ -39,6 +39,8 @@ namespace FlashCardsViewer
         private const string flashCardNotSelected = "No Flash Card Selected!!";
         private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
         private bool exists = false;
+        private MediaPlayer mp;
+        private bool isPlaying = false;
         
         #endregion
         
@@ -50,7 +52,8 @@ namespace FlashCardsViewer
             sc.Close(TimeSpan.FromSeconds(3));
             System.Threading.Thread.Sleep(3000);
             sc = null;
-            InitializeComponent();            
+            InitializeComponent();
+            mp = new MediaPlayer();
             dict = new ObservableCollection<KeyValuePair>();        
             listBoxFlashcards.DataContext = dict;
             if (string.IsNullOrEmpty(Properties.Settings.Default.filePath))
@@ -278,46 +281,87 @@ namespace FlashCardsViewer
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //    Style s = gridUIScreen.FindResource("ButtonStyle") as Style;
-            //if (this.WindowState == WindowState.Maximized)
-            //{
-            //    txtBlockCardData.FontSize = 150;
-                
-            //    AddCardButton.Height = 80;
-            //    AddCardButton.Width = 240;
-            //    DeleteButton.Height = 80;
-            //    DeleteButton.Width = 240;
-            //    FlipButton.Height = 80;
-            //    FlipButton.Width = 240;
-            //    EditButton.Height = 80;
-            //    EditButton.Width = 240;
-            //    HearButton.Height = 80;
-            //    HearButton.Width = 240;
-            //    AddCardButton.FontSize = 18;
-            //    DeleteButton.FontSize = 18;
-            //    FlipButton.FontSize = 18;
-            //    EditButton.FontSize = 18;
-            //    HearButton.FontSize = 18;
-            //}
-            //else
-            //{
-            //    txtBlockCardData.FontSize = 70;
-            //    AddCardButton.FontSize = 12;
-            //    DeleteButton.FontSize = 12;
-            //    FlipButton.FontSize = 12;
-            //    EditButton.FontSize = 12;
-            //    HearButton.FontSize = 12;
-            //    AddCardButton.Height = 40;
-            //    AddCardButton.Width = 120;
-            //    DeleteButton.Height = 40;
-            //    DeleteButton.Width = 120;
-            //    FlipButton.Height = 40;
-            //    FlipButton.Width = 120;
-            //    EditButton.Height = 40;
-            //    EditButton.Width = 120;
-            //    HearButton.Height = 40;
-            //    HearButton.Width = 120;
-            //}
+
+            MainWindow mw = sender as MainWindow;
+            if (mw.WindowState==WindowState.Maximized)
+            {
+                txtBlockCardData.FontSize = 130;
+            }
+            else
+            {
+                txtBlockCardData.FontSize = 70;
+            }
+        }
+
+        private void AnthemButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (mp.Source ==null)
+            {
+                mp.Open(new Uri(@"Resources\National-Anthem-Pakistan.mp3", UriKind.Relative));
+                mp.Play();
+                isPlaying = true;
+            }
+            else
+            {
+                if (isPlaying)
+                {
+                    mp.Pause();
+                    isPlaying = false;
+                }
+                else
+                {
+                    mp.Play();
+                    isPlaying = true;
+                }
+            }
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxFlashcards.SelectedItem == null)
+            {
+                MessageBox.Show(flashCardNotSelected);
+                e.Handled = true;
+                return;
+            }
+
+            KeyValuePair item = listBoxFlashcards.SelectedItem as KeyValuePair;
+            int currentPosition = dict.IndexOf(item);
+            if (currentPosition == dict.Count()-1)
+            {
+                listBoxFlashcards.SelectedItem = dict.ElementAt(0);
+            }
+            else
+            {
+                listBoxFlashcards.SelectedItem = dict.ElementAt(currentPosition + 1);
+            }
+        }
+
+        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxFlashcards.SelectedItem == null)
+            {
+                MessageBox.Show(flashCardNotSelected);
+                e.Handled = true;
+                return;
+            }
+            KeyValuePair item = listBoxFlashcards.SelectedItem as KeyValuePair;
+            int currentPosition = dict.IndexOf(item);
+            if (currentPosition == 0)
+            {
+                listBoxFlashcards.SelectedItem = dict.ElementAt(dict.Count()-1);
+            }
+            else
+            {
+                listBoxFlashcards.SelectedItem = dict.ElementAt(currentPosition -1);
+            }
+        }
+
+        private void RandomButton_Click(object sender, RoutedEventArgs e)
+        {
+            Random r = new Random();
+            int randomnumber = r.Next(dict.Count());
+            listBoxFlashcards.SelectedItem = dict.ElementAt(randomnumber);
         }
 
     }
