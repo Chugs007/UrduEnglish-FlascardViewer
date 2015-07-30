@@ -55,6 +55,7 @@
                 <RowDefinition ></RowDefinition>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition ></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition ></ColumnDefinition>
@@ -68,7 +69,9 @@
             <Button Content="Next Card" Grid.Row="5" x:Name="NextButton" Style="{StaticResource ButtonStyle}" Click="NextButton_Click"/>
             <Button Content="Previous Card" Grid.Row="6" x:Name="PreviousButton" Style="{StaticResource ButtonStyle}" Click="PreviousButton_Click"></Button>
             <Button Content="Random Card" Grid.Row="7" x:Name="RandomButton" Style="{StaticResource ButtonStyle}" Click="RandomButton_Click"></Button>
-            <Button Content="National Anthem" Grid.Row="9" x:Name="AnthemButton" Style="{StaticResource ButtonStyle}" Click="AnthemButton_Click"></Button>
+            <Button Content="Clear List" Grid.Row="8" x:Name="ClearButton" Style="{StaticResource ButtonStyle}" Click="ClearButton_Click"></Button>
+            <Button Content="Retrieve stored cards" Grid.Row="9" x:Name="RetrieveButton" Style="{StaticResource ButtonStyle}" Click="RetrieveButton_Click"></Button>
+            <Button Content="National Anthem" Grid.Row="10" x:Name="AnthemButton" Style="{StaticResource ButtonStyle}" Click="AnthemButton_Click"></Button>
         </Grid>
     </Grid>
 </Window>

@@ -41,7 +41,7 @@ namespace FlashCardsViewer
         private bool exists = false;
         private MediaPlayer mp;
         private bool isPlaying = false;
-        
+        private ObservableCollection<KeyValuePair> dictCopy;
         #endregion
         
 
@@ -54,13 +54,14 @@ namespace FlashCardsViewer
             sc = null;
             InitializeComponent();
             mp = new MediaPlayer();
-            dict = new ObservableCollection<KeyValuePair>();        
+            dict = new ObservableCollection<KeyValuePair>();
+            dictCopy = new ObservableCollection<KeyValuePair>();
             listBoxFlashcards.DataContext = dict;
             if (string.IsNullOrEmpty(Properties.Settings.Default.filePath))
                 Properties.Settings.Default.filePath = defaultFilePath;
             Properties.Settings.Default.Save();
             exists = File.Exists(Properties.Settings.Default.filePath);
-            if (!File.Exists(Properties.Settings.Default.filePath))
+            if (!File.Exists(Properties.Settings.Default.filePath)  || dict.Count() ==0)
             {               
                 using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))
                 {
@@ -142,8 +143,7 @@ namespace FlashCardsViewer
                 }
             }
             else
-            {
-               
+            {               
                 MessageBox.Show("File does not exist or invalid file path");
             }
         }
@@ -360,8 +360,40 @@ namespace FlashCardsViewer
         private void RandomButton_Click(object sender, RoutedEventArgs e)
         {
             Random r = new Random();
-            int randomnumber = r.Next(dict.Count());
-            listBoxFlashcards.SelectedItem = dict.ElementAt(randomnumber);
+            if (dict != null)
+            {
+                 int randomnumber=0;
+                 if (dict.Count() > 0)
+                 {
+                     randomnumber = r.Next(dict.Count());
+                     listBoxFlashcards.SelectedItem = dict.ElementAt(randomnumber);
+                 }
+            }
+            else
+            {
+                MessageBox.Show("No flashcards available!!");
+            }
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (dict != null)
+            {
+                foreach(KeyValuePair k in dict)
+                {
+                    dictCopy.Add(k);
+                }
+                dict.Clear();
+            }
+        }
+
+        private void RetrieveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (dictCopy != null)
+               foreach(KeyValuePair x in dictCopy)
+               {
+                   dict.Add(x);
+               }
         }
 
     }
