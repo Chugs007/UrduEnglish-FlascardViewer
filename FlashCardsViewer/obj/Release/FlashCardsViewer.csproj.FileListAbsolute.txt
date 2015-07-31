@@ -33,3 +33,6 @@ C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Rele
 C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.csproj.GenerateResource.Cache
 C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.exe
 C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.pdb
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Release\Resources\National-Anthem-Pakistan.mp3
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer.csprojResolveAssemblyReference.cache
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Release\FlashCardsViewer_Content.g.cs
