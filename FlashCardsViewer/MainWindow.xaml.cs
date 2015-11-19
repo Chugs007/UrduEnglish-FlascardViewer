@@ -45,6 +45,7 @@ namespace FlashCardsViewer
         private MediaPlayer mp;
         private bool isPlaying = false;
         private ObservableCollection<KeyValuePair> dictCopy;
+        private object currentItem;
         #endregion
         
 
@@ -162,7 +163,8 @@ namespace FlashCardsViewer
             string lbi = listBoxFlashcards.SelectedItem.ToString();            
             this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase;
             this.txtBlockCardData.Visibility = Visibility.Visible;
-            this.flashCardBorder.Visibility = Visibility.Visible;                    
+            this.flashCardBorder.Visibility = Visibility.Visible;
+            currentItem = listBoxFlashcards.SelectedItem;       
         }
 
         private void Button_ShowFlashCard(object sender, RoutedEventArgs e)
@@ -177,6 +179,8 @@ namespace FlashCardsViewer
             this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase.ToString();
             this.txtBlockCardData.Visibility = Visibility.Visible;
             this.flashCardBorder.Visibility = Visibility.Visible;
+
+           
 
         }
 
@@ -200,6 +204,8 @@ namespace FlashCardsViewer
                 this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase.ToString();
                 urduSide = true;
             }
+            this.listBoxFlashcards.Focus();
+      
         }
 
         private void Button_AddFlashCard(object sender, RoutedEventArgs e)
@@ -409,7 +415,6 @@ namespace FlashCardsViewer
             {
                 System.Windows.Forms.MessageBox.Show("No list stored!");
             }
-        }
-
+        }  
     }
 }
