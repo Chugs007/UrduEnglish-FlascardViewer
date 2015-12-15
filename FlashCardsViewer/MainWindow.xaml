@@ -18,8 +18,8 @@
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" ></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <Grid.Background>
@@ -37,10 +37,10 @@
             </StackPanel>         
         </Grid>
         <!--<TextBlock Grid.Column="1" FontSize="25" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Center" Text="Test"></TextBlock>-->
-        <ListBox Grid.Column="2"  ScrollViewer.VerticalScrollBarVisibility="Auto"   x:Name="listBoxFlashcards"  VirtualizingStackPanel.IsVirtualizing="true" SelectionChanged="listBoxFlashcards_SelectionChanged" ItemsSource="{Binding}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Key}"></TextBlock>
+        <ListBox Grid.Column="2"   ScrollViewer.VerticalScrollBarVisibility="Auto"    x:Name="listBoxFlashcards"  VirtualizingStackPanel.IsVirtualizing="true" SelectionChanged="listBoxFlashcards_SelectionChanged" ItemsSource="{Binding}">
+            <ListBox.ItemTemplate >
+                <DataTemplate >
+                    <TextBlock Text="{Binding Key}" ></TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -70,9 +70,9 @@
             <Button Content="Next Card" Grid.Row="4" x:Name="NextButton" Style="{StaticResource ButtonStyle}" Click="NextButton_Click"/>
             <Button Content="Previous Card" Grid.Row="5" x:Name="PreviousButton" Style="{StaticResource ButtonStyle}" Click="PreviousButton_Click"></Button>
             <Button Content="Random Card" Grid.Row="7" x:Name="RandomButton" Style="{StaticResource ButtonStyle}" Click="RandomButton_Click"></Button>
-            <Button Content="Clear List" Grid.Row="8" x:Name="ClearButton" Style="{StaticResource ButtonStyle}" Click="ClearButton_Click"></Button>
-            <Button Content="Retrieve stored cards" Grid.Row="9" x:Name="RetrieveButton" Style="{StaticResource ButtonStyle}" Click="RetrieveButton_Click"></Button>
-            <Button Content="National Anthem" Grid.Row="10" x:Name="AnthemButton" Style="{StaticResource ButtonStyle}" Click="AnthemButton_Click"></Button>
+            <Button Content="First Card" Grid.Row="8" x:Name="ClearButton" Style="{StaticResource ButtonStyle}" Click="FirstButton_Click"></Button>
+            <Button Content="Last Card" Grid.Row="9" x:Name="RetrieveButton" Style="{StaticResource ButtonStyle}" Click="LastButton_Click"></Button>
+            <Button Content="Play National Anthem"  Grid.Row="10" x:Name="AnthemButton" Style="{StaticResource ButtonStyle}" Click="AnthemButton_Click"></Button>
         </Grid>
     </Grid>
 </Window>

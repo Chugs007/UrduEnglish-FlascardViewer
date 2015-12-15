@@ -36,16 +36,16 @@ namespace FlashCardsViewer
 
         #region private variables
         private const string flashCardNumber = "FlashCard #"; //represents a flashcard by what number it is
+        private const string flashCardNotSelected = "No Flash Card Selected!!";
         private bool urduSide = true; //denotes whether the urdu side is showing or english side is
         private int handle = 0; //represents position inside collection
-        private ObservableCollection<KeyValuePair> dict; //collection of key values
-        private const string flashCardNotSelected = "No Flash Card Selected!!";
-        private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
-        private bool exists = false;
         private MediaPlayer mp;
         private bool isPlaying = false;
-        private ObservableCollection<KeyValuePair> dictCopy;
+        private ObservableCollection<KeyValuePair> dict; //collection of key values
         private object currentItem;
+        private ObservableCollection<KeyValuePair> dictCopy;
+        private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
+        
         #endregion
         
 
@@ -63,10 +63,52 @@ namespace FlashCardsViewer
             listBoxFlashcards.DataContext = dict;
             if (string.IsNullOrEmpty(Properties.Settings.Default.filePath))
                 Properties.Settings.Default.filePath = defaultFilePath;
-            Properties.Settings.Default.Save();
-            exists = File.Exists(Properties.Settings.Default.filePath);
-            if (!File.Exists(Properties.Settings.Default.filePath)  || dict.Count() ==0)
-            {               
+            Properties.Settings.Default.Save();                     
+        }
+
+        ~MainWindow()
+        {         
+            using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))          
+            {
+                sw.WriteLine("Urdu, English");
+                foreach (KeyValuePair kvp in dict)
+                {
+                    sw.WriteLine(kvp.Value.UrduPhrase + ", " + kvp.Value.EnglishPhrase);
+                }
+            }
+           
+        }
+
+        private void GetFlashCardsFromFile()
+        {
+            TextFieldParser parser;
+            try
+            {
+                parser = new TextFieldParser(Properties.Settings.Default.filePath);
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                parser.ReadFields(); //skips first line
+                while (!parser.EndOfData)
+                {
+                    string[] phrases = parser.ReadFields();
+                    FlashCard fc = new FlashCard();
+                    fc.UrduPhrase = phrases[0];
+                    fc.EnglishPhrase = phrases[1];
+                    dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+     
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            if (!File.Exists(Properties.Settings.Default.filePath))
+            {
                 using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))
                 {
                     sw.WriteLine("Urdu, English");
@@ -103,53 +145,11 @@ namespace FlashCardsViewer
                     sw.WriteLine("batana" + ", " + "tell");
                     sw.WriteLine("naachna" + ", " + "dance");
                     sw.WriteLine("bemar" + ", " + "sick");
-                    sw.WriteLine("kuch" + ", " + "some/something");         
-                }            
+                    sw.WriteLine("kuch" + ", " + "some/something");
+                }             
             }
-        }
 
-        ~MainWindow()
-        {         
-            using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))          
-            {
-                sw.WriteLine("Urdu, English");
-                foreach (KeyValuePair kvp in dict)
-                {
-                    sw.WriteLine(kvp.Value.UrduPhrase + ", " + kvp.Value.EnglishPhrase);
-                }
-            }
-           
-        }
-     
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            TextFieldParser parser;
-            if (File.Exists(Properties.Settings.Default.filePath))
-            {
-                try
-                {
-                    parser = new TextFieldParser(Properties.Settings.Default.filePath);
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    parser.ReadFields(); //skips first line
-                    while (!parser.EndOfData)
-                    {
-                        string[] phrases = parser.ReadFields();
-                        FlashCard fc = new FlashCard();
-                        fc.UrduPhrase = phrases[0];
-                        fc.EnglishPhrase = phrases[1];
-                        dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
-                    }
-                }
-                catch (Exception ex)
-                {
-                    System.Windows.Forms.MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {               
-                System.Windows.Forms.MessageBox.Show("File does not exist or invalid file path");
-            }
+            GetFlashCardsFromFile();
         }
 
         private void listBoxFlashcards_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -309,6 +309,7 @@ namespace FlashCardsViewer
                 mp.Open(new Uri(@"Resources\National-Anthem-Pakistan.mp3", UriKind.Relative));
                 mp.Play();
                 isPlaying = true;
+                AnthemButton.Content = "Pause National Anthem";
             }
             else
             {
@@ -316,11 +317,13 @@ namespace FlashCardsViewer
                 {
                     mp.Pause();
                     isPlaying = false;
+                    AnthemButton.Content = "Play National Anthem";
                 }
                 else
                 {
                     mp.Play();
                     isPlaying = true;
+                    AnthemButton.Content = "Pause National Anthem";
                 }
             }
         }
@@ -399,9 +402,7 @@ namespace FlashCardsViewer
                 }
             }
                 dict.Clear();               
-            }
-
-            
+            }            
         }
 
         private void RetrieveButton_Click(object sender, RoutedEventArgs e)
@@ -415,6 +416,30 @@ namespace FlashCardsViewer
             {
                 System.Windows.Forms.MessageBox.Show("No list stored!");
             }
-        }  
+        }
+
+       private void FirstButton_Click(object sender, RoutedEventArgs e)
+       {
+            if (dict !=null && dict.Count() > 0)
+            {
+                listBoxFlashcards.SelectedItem = dict.ElementAt(0);
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("No flashcards available!");
+            }
+       }
+
+       private void LastButton_Click(object sender, RoutedEventArgs e)
+       {
+            if (dict != null && dict.Count() > 0)
+            {
+                listBoxFlashcards.SelectedItem = dict.ElementAt(dict.Count() - 1);
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("No flashcards available!");
+            }
+       }
     }
 }
