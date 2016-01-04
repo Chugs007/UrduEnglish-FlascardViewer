@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\
+=======
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\
+>>>>>>> 9520762607b47b03bb15518c5db3e0e59fae446a
 FlashCardsViewer
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\App.xaml
+3426454576
+1876792639
+8-808688398
+15-1389451588
+=======
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\App.xaml
 3426454576
 1876792639
 8-808688398
 15235531341
+>>>>>>> 9520762607b47b03bb15518c5db3e0e59fae446a
 AddWindow.xaml;EditWindow.xaml;MainWindow.xaml;
 
 False

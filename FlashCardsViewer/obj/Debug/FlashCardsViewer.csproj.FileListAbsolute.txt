@@ -63,6 +63,10 @@ C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debu
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Debug\Resources\National-Anthem-Pakistan.mp3
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer_Content.g.cs
 C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Debug\Resources\National-Anthem-Pakistan.mp3
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer_Content.g.cs
+=======
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.exe.config
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.exe
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.pdb
@@ -81,3 +85,4 @@ C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardVi
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.Properties.Resources.resources
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csproj.GenerateResource.Cache
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\bin\Debug\FlashCardsViewer.pdb
+>>>>>>> 9520762607b47b03bb15518c5db3e0e59fae446a

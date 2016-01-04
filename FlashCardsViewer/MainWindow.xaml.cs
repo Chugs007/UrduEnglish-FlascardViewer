@@ -149,7 +149,52 @@ namespace FlashCardsViewer
                 }             
             }
 
+<<<<<<< HEAD
+        ~MainWindow()
+        {         
+            using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))          
+            {
+                sw.WriteLine("Urdu, English");
+                foreach (KeyValuePair kvp in dict)
+                {
+                    sw.WriteLine(kvp.Value.UrduPhrase + ", " + kvp.Value.EnglishPhrase);
+                }
+            }
+           
+        }
+     
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextFieldParser parser;
+            if (File.Exists(Properties.Settings.Default.filePath))
+            {
+                try
+                {
+                    parser = new TextFieldParser(Properties.Settings.Default.filePath);
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    parser.ReadFields(); //skips first line
+                    while (!parser.EndOfData)
+                    {
+                        string[] phrases = parser.ReadFields();
+                        FlashCard fc = new FlashCard();
+                        fc.UrduPhrase = phrases[0];
+                        fc.EnglishPhrase = phrases[1];
+                        dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {               
+                System.Windows.Forms.MessageBox.Show("File does not exist or invalid file path");
+            }
+=======
             GetFlashCardsFromFile();
+>>>>>>> 9520762607b47b03bb15518c5db3e0e59fae446a
         }
 
         private void listBoxFlashcards_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -402,7 +447,13 @@ namespace FlashCardsViewer
                 }
             }
                 dict.Clear();               
+<<<<<<< HEAD
+            }
+
+            
+=======
             }            
+>>>>>>> 9520762607b47b03bb15518c5db3e0e59fae446a
         }
 
         private void RetrieveButton_Click(object sender, RoutedEventArgs e)
