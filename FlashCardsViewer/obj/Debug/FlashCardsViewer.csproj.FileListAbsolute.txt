@@ -61,3 +61,5 @@ C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsV
 C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\bin\Debug\Resources\National-Anthem-Pakistan.mp3
 C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer_Content.g.cs
 C:\Users\ochug_000\Desktop\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csprojResolveAssemblyReference.cache
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\bin\Debug\Resources\National-Anthem-Pakistan.mp3
+C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer_Content.g.cs

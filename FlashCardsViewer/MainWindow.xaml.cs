@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------
 
 using Microsoft.VisualBasic.FileIO;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Windows.Forms;
+
 
 namespace FlashCardsViewer
 {
@@ -139,12 +142,12 @@ namespace FlashCardsViewer
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
             }
             else
             {               
-                MessageBox.Show("File does not exist or invalid file path");
+                System.Windows.Forms.MessageBox.Show("File does not exist or invalid file path");
             }
         }
 
@@ -166,7 +169,7 @@ namespace FlashCardsViewer
         {
             if (listBoxFlashcards.SelectedItem == null)
             {
-                MessageBox.Show(flashCardNotSelected);
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);
                 e.Handled = true;            
                 return;
             }
@@ -181,7 +184,7 @@ namespace FlashCardsViewer
         {
             if (listBoxFlashcards.SelectedItem == null)
             {
-                MessageBox.Show(flashCardNotSelected);
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);
                 e.Handled = true;
                 return;
             }
@@ -220,7 +223,7 @@ namespace FlashCardsViewer
         {
             if (listBoxFlashcards.SelectedItem==null)
             {
-                MessageBox.Show(flashCardNotSelected);
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);
                 e.Handled = true;
                 return;
             }
@@ -245,7 +248,7 @@ namespace FlashCardsViewer
         {
             if (listBoxFlashcards.SelectedItem == null)
             {
-                MessageBox.Show(flashCardNotSelected);
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);
                 e.Handled = true;
                 return;
             }
@@ -267,7 +270,7 @@ namespace FlashCardsViewer
         {
             if (listBoxFlashcards.SelectedItem == null)
             {
-                MessageBox.Show(flashCardNotSelected);
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);
                 e.Handled = true;
                 return;
             }
@@ -320,7 +323,7 @@ namespace FlashCardsViewer
         {
             if (listBoxFlashcards.SelectedItem == null)
             {
-                MessageBox.Show(flashCardNotSelected);
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);
                 e.Handled = true;
                 return;
             }
@@ -341,7 +344,7 @@ namespace FlashCardsViewer
         {
             if (listBoxFlashcards.SelectedItem == null)
             {
-                MessageBox.Show(flashCardNotSelected);
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);
                 e.Handled = true;
                 return;
             }
@@ -371,7 +374,7 @@ namespace FlashCardsViewer
             }
             else
             {
-                MessageBox.Show("No flashcards available!!");
+                System.Windows.Forms.MessageBox.Show("No flashcards available!!");
             }
         }
 
@@ -379,12 +382,20 @@ namespace FlashCardsViewer
         {
             if (dict != null)
             {
-                foreach(KeyValuePair k in dict)
+                
+           DialogResult result=System.Windows.Forms.MessageBox.Show("Do you want to save this list?", "Save List",MessageBoxButtons.YesNo );
+                
+            if (result==System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (KeyValuePair k in dict)
                 {
                     dictCopy.Add(k);
                 }
-                dict.Clear();
             }
+                dict.Clear();               
+            }
+
+            
         }
 
         private void RetrieveButton_Click(object sender, RoutedEventArgs e)
@@ -394,6 +405,10 @@ namespace FlashCardsViewer
                {
                    dict.Add(x);
                }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("No list stored!");
+            }
         }
 
     }
