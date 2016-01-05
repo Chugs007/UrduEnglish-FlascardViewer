@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------
-// 2015- All rights reserved. 
+// 2015-16 All rights reserved. 
 // Created by:	Omar Chughtai
 //-------------------------------------------------------------------
 
@@ -24,6 +24,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 
 namespace FlashCardsViewer
@@ -45,6 +46,7 @@ namespace FlashCardsViewer
         private object currentItem;
         private ObservableCollection<KeyValuePair> dictCopy;
         private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
+        private QuizWindow qw;
         
         #endregion
         
@@ -280,25 +282,38 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }
+
             SpeechSynthesizer speech = new SpeechSynthesizer();
             KeyValuePair kvp = listBoxFlashcards.SelectedItem as KeyValuePair;
+
             if (urduSide)
                 speech.Speak(kvp.Value.UrduPhrase);
             else
                 speech.Speak(kvp.Value.EnglishPhrase);
-        }
+        }      
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-
+            double oldHeight;
+            double oldWidth;          
+            oldHeight=(double)e.PreviousSize.Height;
+            oldWidth = (double)e.PreviousSize.Width;
             MainWindow mw = sender as MainWindow;
             if (mw.WindowState==WindowState.Maximized)
             {
                 txtBlockCardData.FontSize = 130;
             }
-            else
+            if (oldWidth < e.NewSize.Width || oldHeight < e.NewSize.Height)
             {
-                txtBlockCardData.FontSize = 70;
+                if (txtBlockCardData.FontSize == 130)
+                    return;
+                txtBlockCardData.FontSize += 1;
+            }
+            if (oldHeight > e.NewSize.Height || oldWidth > e.NewSize.Width)
+            {
+                if (txtBlockCardData.FontSize == 78)
+                    return;
+                txtBlockCardData.FontSize -= 1;
             }
         }
 
@@ -441,5 +456,55 @@ namespace FlashCardsViewer
                 System.Windows.Forms.MessageBox.Show("No flashcards available!");
             }
        }
+
+       private void TakeQuizButton_Click(object sender, RoutedEventArgs e)
+       {
+         
+           if (dict != null)
+           {
+               if (dict.Count() >= 10)
+               {
+                   Dictionary<string, string> randomFlashCards = DrawRandomCards();
+                   qw = new QuizWindow();
+                   qw.Show();
+                   qw.GenerateQuestions(randomFlashCards);
+                   qw.GenerateRandomCardsEvent += qw_GenerateRandomCardsEvent;
+               }
+               else
+               {
+                   System.Windows.Forms.MessageBox.Show("Need at least 10 flashcards to take quiz!!");
+               }
+           }          
+       }
+
+       void qw_GenerateRandomCardsEvent()
+       {
+          Dictionary<string,string> randomCards= DrawRandomCards();
+          qw.GenerateQuestions(randomCards);
+       }
+        
+        private Dictionary<string,string> DrawRandomCards()
+        {
+            Random r = new Random();
+            int[] randomNumbers = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                int temp = r.Next(dict.Count());
+                while (randomNumbers.Contains(temp))
+                {
+                    temp = r.Next(dict.Count());
+                }
+                randomNumbers[i] = temp;
+            }
+
+            Dictionary<string, string> randomFlashCards = new Dictionary<string, string>();
+            for (int i = 0; i < 10; i++)
+            {
+                FlashCard fs = dict.ElementAt(randomNumbers[i]).Value;
+                randomFlashCards.Add(fs.UrduPhrase, fs.EnglishPhrase);
+            }
+
+            return randomFlashCards;
+        }
     }
 }

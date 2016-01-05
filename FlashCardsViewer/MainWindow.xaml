@@ -31,7 +31,7 @@
                 <Border x:Name="flashCardBorder"  Grid.Column="1"  MinHeight="100" MinWidth="200" Height="auto" Width="auto" Visibility="Hidden">
 
                     <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-                    <TextBlock x:Name="txtBlockCardData" TextWrapping="Wrap" Foreground="NavajoWhite"   FontSize="78" HorizontalAlignment="Center"  Margin="10,5,10,0" Visibility="Hidden"/>
+                    <TextBlock x:Name="txtBlockCardData" TextWrapping="Wrap" Foreground="NavajoWhite"   FontSize="78" HorizontalAlignment="Center"   Visibility="Hidden"/>
                 </ScrollViewer>
             </Border>
             </StackPanel>         
@@ -57,6 +57,7 @@
                 <RowDefinition ></RowDefinition>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition ></ColumnDefinition>
@@ -73,6 +74,7 @@
             <Button Content="First Card" Grid.Row="8" x:Name="ClearButton" Style="{StaticResource ButtonStyle}" Click="FirstButton_Click"></Button>
             <Button Content="Last Card" Grid.Row="9" x:Name="RetrieveButton" Style="{StaticResource ButtonStyle}" Click="LastButton_Click"></Button>
             <Button Content="Play National Anthem"  Grid.Row="10" x:Name="AnthemButton" Style="{StaticResource ButtonStyle}" Click="AnthemButton_Click"></Button>
+            <Button Content="Take Quiz" Grid.Row="11" x:Name="TakeQuizButton" Style="{StaticResource ButtonStyle}" Click="TakeQuizButton_Click"></Button>
         </Grid>
     </Grid>
 </Window>
