@@ -26,7 +26,7 @@
             <ColumnDefinition ></ColumnDefinition>
             <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0">
+        <StackPanel Grid.Row="0" Grid.Column="0" >
             <TextBlock x:Name="textBlockQuestion1" Style="{StaticResource textBlockStyle}"  ></TextBlock>
             <TextBlock x:Name="textBlockQuestion2" Style="{StaticResource textBlockStyle}"  ></TextBlock>
             <TextBlock x:Name="textBlockQuestion3" Style="{StaticResource textBlockStyle}"  ></TextBlock>
@@ -38,7 +38,7 @@
             <TextBlock x:Name="textBlockQuestion9" Style="{StaticResource textBlockStyle}"></TextBlock>
             <TextBlock x:Name="textBlockQuestion10" Style="{StaticResource textBlockStyle}"></TextBlock>
         </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1">
+        <StackPanel Grid.Row="0" Grid.Column="1" x:Name="stackPanelTextBoxes">
             <TextBox x:Name="textboxAnswer1" Style="{StaticResource textBoxStyle}"></TextBox>
             <TextBox x:Name="textboxAnswer2" Style="{StaticResource textBoxStyle}"></TextBox>
             <TextBox x:Name="textboxAnswer3" Style="{StaticResource textBoxStyle}"></TextBox>

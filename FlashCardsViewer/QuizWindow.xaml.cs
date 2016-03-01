@@ -157,6 +157,11 @@ namespace FlashCardsViewer
 
         private void buttonGenerateQuiz_Click(object sender, RoutedEventArgs e)
         {
+            foreach(var child in stackPanelTextBoxes.Children)
+            {
+                TextBox tb = child as TextBox;
+                tb.Background = correctAnswerBrush;
+            }
           if (GenerateRandomCardsEvent !=null)
           {
               GenerateRandomCardsEvent();

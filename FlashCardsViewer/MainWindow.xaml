@@ -17,7 +17,7 @@
      
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" ></ColumnDefinition>
+            <ColumnDefinition Width="auto" ></ColumnDefinition>         
             <ColumnDefinition Width="5*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -73,7 +73,7 @@
             <Button Content="Random Card" Grid.Row="7" x:Name="RandomButton" Style="{StaticResource ButtonStyle}" Click="RandomButton_Click"></Button>
             <Button Content="First Card" Grid.Row="8" x:Name="ClearButton" Style="{StaticResource ButtonStyle}" Click="FirstButton_Click"></Button>
             <Button Content="Last Card" Grid.Row="9" x:Name="RetrieveButton" Style="{StaticResource ButtonStyle}" Click="LastButton_Click"></Button>
-            <Button Content="Play National Anthem"  Grid.Row="10" x:Name="AnthemButton" Style="{StaticResource ButtonStyle}" Click="AnthemButton_Click"></Button>
+            <Button Content="Search"  Grid.Row="10" x:Name="SearchButton" Style="{StaticResource ButtonStyle}" Click="SearchButton_Click"></Button>
             <Button Content="Take Quiz" Grid.Row="11" x:Name="TakeQuizButton" Style="{StaticResource ButtonStyle}" Click="TakeQuizButton_Click"></Button>
         </Grid>
     </Grid>

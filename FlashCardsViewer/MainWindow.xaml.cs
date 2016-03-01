@@ -47,6 +47,7 @@ namespace FlashCardsViewer
         private ObservableCollection<KeyValuePair> dictCopy;
         private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
         private QuizWindow qw;
+        private SearchWindow sw;
         
         #endregion
         
@@ -161,12 +162,14 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }
-            urduSide = true;
-            string lbi = listBoxFlashcards.SelectedItem.ToString();            
-            this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase;
+            //urduSide = true;
+            string lbi = listBoxFlashcards.SelectedItem.ToString();
+            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == lbi).Value.UrduPhrase : dict.Single(x => x.Key == lbi).Value.EnglishPhrase;
+            //this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase;
             this.txtBlockCardData.Visibility = Visibility.Visible;
             this.flashCardBorder.Visibility = Visibility.Visible;
-            currentItem = listBoxFlashcards.SelectedItem;       
+            currentItem = listBoxFlashcards.SelectedItem;
+            
         }
 
         private void Button_ShowFlashCard(object sender, RoutedEventArgs e)
@@ -319,28 +322,28 @@ namespace FlashCardsViewer
 
         private void AnthemButton_Click(object sender, RoutedEventArgs e)
         {
-            if (mp.Source ==null)
-            {
-                mp.Open(new Uri(@"Resources\National-Anthem-Pakistan.mp3", UriKind.Relative));
-                mp.Play();
-                isPlaying = true;
-                AnthemButton.Content = "Pause National Anthem";
-            }
-            else
-            {
-                if (isPlaying)
-                {
-                    mp.Pause();
-                    isPlaying = false;
-                    AnthemButton.Content = "Play National Anthem";
-                }
-                else
-                {
-                    mp.Play();
-                    isPlaying = true;
-                    AnthemButton.Content = "Pause National Anthem";
-                }
-            }
+            //if (mp.Source ==null)
+            //{
+            //    mp.Open(new Uri(@"Resources/National-Anthem-Pakistan.wav",UriKind.Relative));
+            //    mp.Play();
+            //    isPlaying = true;
+            //    AnthemButton.Content = "Pause National Anthem";
+            //}
+            //else
+            //{
+            //    if (isPlaying)
+            //    {
+            //        mp.Pause();
+            //        isPlaying = false;
+            //        AnthemButton.Content = "Play National Anthem";
+            //    }
+            //    else
+            //    {
+            //        mp.Play();
+            //        isPlaying = true;
+            //        AnthemButton.Content = "Pause National Anthem";
+            //    }
+            //}
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
@@ -505,6 +508,28 @@ namespace FlashCardsViewer
             }
 
             return randomFlashCards;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {        
+            sw = new SearchWindow();            
+            sw.Show();
+            sw.searchforcardevent += sw_searchforcardevent;
+        }
+
+        void sw_searchforcardevent(string englishphrase)
+        {
+            bool containsPhrase=dict.Select(x => x.Value.EnglishPhrase.ToLower()).Contains(englishphrase.ToLower());
+            if (containsPhrase)
+            {                               
+                urduSide = false;
+                listBoxFlashcards.SelectedItem = dict.Single(x => x.Value.EnglishPhrase.ToLower() == englishphrase.ToLower());
+                sw.Close();
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("word/phrase not found!");
+            }
         }
     }
 }
