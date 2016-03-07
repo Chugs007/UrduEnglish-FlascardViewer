@@ -168,8 +168,7 @@ namespace FlashCardsViewer
             //this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase;
             this.txtBlockCardData.Visibility = Visibility.Visible;
             this.flashCardBorder.Visibility = Visibility.Visible;
-            currentItem = listBoxFlashcards.SelectedItem;
-            
+            currentItem = listBoxFlashcards.SelectedItem;            
         }
 
         private void Button_ShowFlashCard(object sender, RoutedEventArgs e)
@@ -183,10 +182,7 @@ namespace FlashCardsViewer
             string lbi = listBoxFlashcards.SelectedItem.ToString();
             this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase.ToString();
             this.txtBlockCardData.Visibility = Visibility.Visible;
-            this.flashCardBorder.Visibility = Visibility.Visible;
-
-           
-
+            this.flashCardBorder.Visibility = Visibility.Visible;           
         }
 
         private void Button_FlipFlashCard(object sender, RoutedEventArgs e)
@@ -274,7 +270,8 @@ namespace FlashCardsViewer
         {
             string key = listBoxFlashcards.SelectedItem.ToString();
             dict.Single(x => x.Key == key).Value.UrduPhrase = text1;
-            dict.Single(x => x.Key == key).Value.EnglishPhrase = text2;            
+            dict.Single(x => x.Key == key).Value.EnglishPhrase = text2;
+            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == key).Value.UrduPhrase : dict.Single(x => x.Key == key).Value.EnglishPhrase;
         }
 
         private void Button_Speak(object sender, RoutedEventArgs e)
