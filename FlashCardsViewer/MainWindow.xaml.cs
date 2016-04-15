@@ -518,11 +518,11 @@ namespace FlashCardsViewer
         {
             bool containsPhrase=dict.Select(x => x.Value.EnglishPhrase.ToLower()).Contains(englishphrase.ToLower());
             if (containsPhrase)
-            {                               
+            {
                 urduSide = false;
                 listBoxFlashcards.SelectedItem = dict.Single(x => x.Value.EnglishPhrase.ToLower() == englishphrase.ToLower());
                 sw.Close();
-            }
+            }     
             else
             {
                 System.Windows.MessageBox.Show("word/phrase not found!");

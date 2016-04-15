@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pakistan_round_icon_640.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -141,6 +144,7 @@
     <Resource Include="Resources\darkGreenBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="pakistan_round_icon_640.ico" />
     <Content Include="Resources\National-Anthem-Pakistan.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

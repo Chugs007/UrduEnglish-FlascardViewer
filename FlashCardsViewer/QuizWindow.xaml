@@ -4,7 +4,7 @@
         Title="QuizWindow" MinHeight="500" MinWidth="600" Height="500" Width="600">
     <Window.Resources>
         <Style x:Key="textBlockStyle" TargetType="TextBlock">           
-            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Width" Value="auto"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Margin" Value="10,10,0,0"></Setter>     
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" ></ColumnDefinition>
-            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
             <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" >
