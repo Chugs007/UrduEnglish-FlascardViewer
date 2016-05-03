@@ -40,15 +40,13 @@ namespace FlashCardsViewer
         private const string flashCardNotSelected = "No Flash Card Selected!!";
         private bool urduSide = true; //denotes whether the urdu side is showing or english side is
         private int handle = 0; //represents position inside collection
-        private MediaPlayer mp;
-        private bool isPlaying = false;
+        private MediaPlayer mp;       
         private ObservableCollection<KeyValuePair> dict; //collection of key values
         private object currentItem;
         private ObservableCollection<KeyValuePair> dictCopy;
         private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
         private QuizWindow qw;
-        private SearchWindow sw;
-        
+        private SearchWindow sw;        
         #endregion
         
 
@@ -161,11 +159,9 @@ namespace FlashCardsViewer
             {
                 e.Handled = true;
                 return;
-            }
-            //urduSide = true;
+            }      
             string lbi = listBoxFlashcards.SelectedItem.ToString();
-            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == lbi).Value.UrduPhrase : dict.Single(x => x.Key == lbi).Value.EnglishPhrase;
-            //this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase;
+            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == lbi).Value.UrduPhrase : dict.Single(x => x.Key == lbi).Value.EnglishPhrase;           
             this.txtBlockCardData.Visibility = Visibility.Visible;
             this.flashCardBorder.Visibility = Visibility.Visible;
             currentItem = listBoxFlashcards.SelectedItem;            
@@ -315,33 +311,7 @@ namespace FlashCardsViewer
                     return;
                 txtBlockCardData.FontSize -= 1;
             }
-        }
-
-        private void AnthemButton_Click(object sender, RoutedEventArgs e)
-        {
-            //if (mp.Source ==null)
-            //{
-            //    mp.Open(new Uri(@"Resources/National-Anthem-Pakistan.wav",UriKind.Relative));
-            //    mp.Play();
-            //    isPlaying = true;
-            //    AnthemButton.Content = "Pause National Anthem";
-            //}
-            //else
-            //{
-            //    if (isPlaying)
-            //    {
-            //        mp.Pause();
-            //        isPlaying = false;
-            //        AnthemButton.Content = "Play National Anthem";
-            //    }
-            //    else
-            //    {
-            //        mp.Play();
-            //        isPlaying = true;
-            //        AnthemButton.Content = "Pause National Anthem";
-            //    }
-            //}
-        }
+        } 
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {

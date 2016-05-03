@@ -144,6 +144,12 @@
     <Resource Include="Resources\darkGreenBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Tick_clip_art_small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\X_Icon_clip_art_small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="pakistan_round_icon_640.ico" />
     <Content Include="Resources\National-Anthem-Pakistan.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

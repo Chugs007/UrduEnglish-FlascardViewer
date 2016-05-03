@@ -21,4 +21,5 @@ C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardVi
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\bin\Debug\Resources\National-Anthem-Pakistan.wav
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\SearchWindow.baml
 C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\SearchWindow.g.cs
-C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csprojResolveAssemblyReference.cache
+C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer_MarkupCompile.lref
+C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\GeneratedInternalTypeHelper.g.cs

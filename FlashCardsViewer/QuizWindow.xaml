@@ -1,8 +1,11 @@
 ﻿<Window x:Class="FlashCardsViewer.QuizWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="QuizWindow" MinHeight="500" MinWidth="600" Height="500" Width="600">
+        xmlns:flashcards="clr-namespace:FlashCardsViewer"
+        x:Name="QuizWin"
+        Title="QuizWindow" MinHeight="500" MinWidth="600" Height="500" Width="700">
     <Window.Resources>
+        <flashcards:BoolToVisibilityConverter x:Key="boolToVisConverter"></flashcards:BoolToVisibilityConverter>
         <Style x:Key="textBlockStyle" TargetType="TextBlock">           
             <Setter Property="Width" Value="auto"></Setter>
             <Setter Property="Height" Value="30"></Setter>
@@ -15,16 +18,22 @@
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Margin" Value="10,10,0,0"></Setter>
         </Style>
+        <Style x:Key="ImageStatusStyle" TargetType="Image">
+            <Setter Property="Width" Value="25"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Margin" Value="15,15,0,0"></Setter>     
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" ></ColumnDefinition>
-            <ColumnDefinition Width="*" ></ColumnDefinition>
-            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="5*" ></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" >
             <TextBlock x:Name="textBlockQuestion1" Style="{StaticResource textBlockStyle}"  ></TextBlock>
@@ -50,9 +59,21 @@
             <TextBox x:Name="textboxAnswer9" Style="{StaticResource textBoxStyle}"></TextBox>
             <TextBox x:Name="textboxAnswer10" Style="{StaticResource textBoxStyle}"></TextBox>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-        <Button Height="25" Width="110" Margin="10,0,0,0" VerticalAlignment="Center"   x:Name="buttonGenerateQuiz" Click="buttonGenerateQuiz_Click" Content="Generate New Quiz"></Button>
-            <Button Height="25" Width="50" Margin="50,0,0,0"  x:Name="buttonSubmit" Content="Submit" Click="buttonSubmit_Click"></Button>
+        <StackPanel Grid.Column="2" Grid.Row="0" x:Name="stackPanelQuestionStatus">
+            <Image x:Name="imageStatus1" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus2" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus3" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus4" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus5" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus6" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus7" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus8" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus9" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+            <Image x:Name="imageStatus10" Source="Resources/Tick_clip_art_small.png" Style="{StaticResource ImageStatusStyle}" Visibility="{Binding ElementName=QuizWin,Path=ShowStatusImage, Mode=TwoWay, Converter={StaticResource boolToVisConverter}}"></Image>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,0">
+        <Button Height="25" Width="110" Margin="10,0,0,0"   x:Name="buttonGenerateQuiz" Click="buttonGenerateQuiz_Click" Content="Generate New Quiz"></Button>
+        <Button Height="25" Width="50" Margin="50,0,0,0"  x:Name="buttonSubmit" Content="Submit" Click="buttonSubmit_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

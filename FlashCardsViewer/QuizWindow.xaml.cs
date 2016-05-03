@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,12 +31,31 @@ namespace FlashCardsViewer
 
         public QuizWindow()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
-
-        public void GenerateQuestions(Dictionary<string,string> randomCards)
+        public static readonly DependencyProperty ShowStatusImageProperty = DependencyProperty.Register("ShowStatusImage", typeof(bool), typeof(QuizWindow), new PropertyMetadata(false));
+  
+        public bool ShowStatusImage
         {
+            get
+            {
+                return (bool)GetValue(ShowStatusImageProperty);
+            }
+
+            set
+            {
+                SetValue(ShowStatusImageProperty, value);
+            }
+        }
+
+        public void GenerateQuestions(Dictionary<string, string> randomCards)
+        {
+            foreach (TextBox tb in stackPanelTextBoxes.Children)
+            {
+                tb.Text = string.Empty;
+            }
+            ShowStatusImage = false;
             flashCards = randomCards;
             textBlockQuestion1.Text = randomCards.ElementAt(0).Key;
             textBlockQuestion2.Text = randomCards.ElementAt(1).Key;
@@ -51,121 +71,141 @@ namespace FlashCardsViewer
 
         private void buttonSubmit_Click(object sender, RoutedEventArgs e)
         {
+            
             if (textboxAnswer1.Text != flashCards.ElementAt(0).Value)
-            {
-                textboxAnswer1.Background = wrongAnswerBrush;
+            {                
+                imageStatus1.Source = new BitmapImage(new Uri(@"/Resources/X_Icon_clip_art_small.png",UriKind.Relative));
             }
             else
-            {
-                textboxAnswer1.Background = correctAnswerBrush;
+            {                
+                imageStatus1.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png",UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer2.Text != flashCards.ElementAt(1).Value)
-            {
-                textboxAnswer2.Background = wrongAnswerBrush;
+            {                
+                imageStatus2.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer2.Background = correctAnswerBrush;
+            {                
+                imageStatus2.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer3.Text != flashCards.ElementAt(2).Value)
-            {
-                textboxAnswer3.Background = wrongAnswerBrush;
+            {                
+                imageStatus3.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer3.Background = correctAnswerBrush;
+            {                
+                imageStatus3.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer4.Text != flashCards.ElementAt(3).Value)
-            {
-                textboxAnswer4.Background = wrongAnswerBrush;
+            {               
+                imageStatus4.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer4.Background = correctAnswerBrush;
+            {                
+                imageStatus4.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer5.Text != flashCards.ElementAt(4).Value)
-            {
-                textboxAnswer5.Background = wrongAnswerBrush;
+            {               
+                imageStatus5.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer5.Background = correctAnswerBrush;
+            {                
+                imageStatus5.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer6.Text != flashCards.ElementAt(5).Value)
-            {
-                textboxAnswer6.Background = wrongAnswerBrush;
+            {                
+                imageStatus6.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer6.Background = correctAnswerBrush;
+            {           
+                imageStatus6.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer7.Text != flashCards.ElementAt(6).Value)
-            {
-                textboxAnswer7.Background = wrongAnswerBrush;
+            {                
+                imageStatus7.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer7.Background = correctAnswerBrush;
+            {                
+                imageStatus7.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer8.Text != flashCards.ElementAt(7).Value)
-            {
-                textboxAnswer8.Background = wrongAnswerBrush;
+            {              
+                imageStatus8.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer8.Background = correctAnswerBrush;
+            {                
+                imageStatus8.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
 
             if (textboxAnswer9.Text != flashCards.ElementAt(8).Value)
-            {
-                textboxAnswer9.Background = wrongAnswerBrush;
+            {                
+                imageStatus9.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer9.Background = correctAnswerBrush;
+            {                
                 numberCorrect++;
+                imageStatus9.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
             }
 
             if (textboxAnswer10.Text != flashCards.ElementAt(9).Value)
-            {
-                textboxAnswer10.Background = wrongAnswerBrush;
+            {                
+                imageStatus10.Source = new BitmapImage(new Uri(@"Resources/X_Icon_clip_art_small.png", UriKind.Relative));
             }
             else
-            {
-                textboxAnswer10.Background = correctAnswerBrush;
+            {                
+                imageStatus10.Source = new BitmapImage(new Uri(@"Resources/Tick_clip_art_small.png", UriKind.Relative));
                 numberCorrect++;
             }
-             System.Windows.Forms.MessageBox.Show("You got " + numberCorrect + " out of 10 correct!");
 
-             numberCorrect = 0;
+            ShowStatusImage = true;
+            System.Windows.Forms.MessageBox.Show("You got " + numberCorrect + " out of 10 correct!");
+
+            numberCorrect = 0;
         }
 
         private void buttonGenerateQuiz_Click(object sender, RoutedEventArgs e)
         {
-            foreach(var child in stackPanelTextBoxes.Children)
+            foreach (var child in stackPanelTextBoxes.Children)
             {
                 TextBox tb = child as TextBox;
                 tb.Background = correctAnswerBrush;
             }
-          if (GenerateRandomCardsEvent !=null)
-          {
-              GenerateRandomCardsEvent();
-          }
+            if (GenerateRandomCardsEvent != null)
+            {
+                GenerateRandomCardsEvent();
+            }
+        }  
+    }
+
+    public class BoolToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            bool val = (bool)value;
+            return val ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Visibility val = (Visibility)value;
+
+            return Visibility.Visible == val;
         }
     }
+   
 }
