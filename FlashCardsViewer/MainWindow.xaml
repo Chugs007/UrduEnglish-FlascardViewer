@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <Grid.Background>
-                <ImageBrush  ImageSource="Resources/Pakistan_Background1.jpg"></ImageBrush>
+                <ImageBrush  ImageSource="/Resources/Pakistan_Background1.jpg"></ImageBrush>
             </Grid.Background>
         </Grid>      
         <Grid Grid.Row="0" Grid.Column="1">                      

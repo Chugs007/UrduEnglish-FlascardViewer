@@ -46,7 +46,8 @@ namespace FlashCardsViewer
         private ObservableCollection<KeyValuePair> dictCopy;
         private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
         private QuizWindow qw;
-        private SearchWindow sw;        
+        private SearchWindow sw;
+        private AddWindow ad;
         #endregion
         
 
@@ -207,7 +208,7 @@ namespace FlashCardsViewer
 
         private void Button_AddFlashCard(object sender, RoutedEventArgs e)
         {
-            AddWindow ad = new AddWindow();
+            ad = new AddWindow();
             ad.Show();
             
             ad.AddFlashCardEvent += ad_AddFlashCardEvent;
@@ -215,11 +216,16 @@ namespace FlashCardsViewer
 
         void ad_AddFlashCardEvent(string urduWord, string englishWord)
         {
+            if (dict.Select(x=>x.Value.UrduPhrase.ToLower()).Contains(urduWord))
+            {
+                System.Windows.MessageBox.Show(urduWord + " already exists in flash card set!");        
+                return;
+            }
             FlashCard fc = new FlashCard();
             fc.UrduPhrase = urduWord;
             fc.EnglishPhrase = englishWord;
             dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
-               
+            ad.Close();   
         }
 
         private void Button_DeleteFlascard(object sender, RoutedEventArgs e)
