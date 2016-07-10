@@ -21,7 +21,7 @@ namespace FlashCardsViewer
         public delegate void ApplyChange(string text1, string text2);
         public event ApplyChange ApplyChangeEvent;
 
-        public EditWindow(KeyValuePair kvp)
+        public EditWindow(FlashCardSet kvp)
         {
             InitializeComponent();
             this.txtBoxUrduWord.Text = kvp.Value.UrduPhrase;

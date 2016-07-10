@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------
-// 2015-16 All rights reserved. 
+// 2016-17 All rights reserved. 
 // Created by:	Omar Chughtai
 //-------------------------------------------------------------------
 
@@ -36,14 +36,14 @@ namespace FlashCardsViewer
     {
 
         #region private variables
-        private const string flashCardNumber = "FlashCard #"; //represents a flashcard by what number it is
+        private const string flashCardConstant = "FlashCard #"; //represents a flashcard by what number it is
         private const string flashCardNotSelected = "No Flash Card Selected!!";
         private bool urduSide = true; //denotes whether the urdu side is showing or english side is
         private int handle = 0; //represents position inside collection
         private MediaPlayer mp;       
-        private ObservableCollection<KeyValuePair> dict; //collection of key values
+        private ObservableCollection<FlashCardSet> dict; //collection of key values
         private object currentItem;
-        private ObservableCollection<KeyValuePair> dictCopy;
+        private ObservableCollection<FlashCardSet> dictCopy;
         private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
         private QuizWindow qw;
         private SearchWindow sw;
@@ -60,8 +60,8 @@ namespace FlashCardsViewer
             sc = null;
             InitializeComponent();
             mp = new MediaPlayer();
-            dict = new ObservableCollection<KeyValuePair>();
-            dictCopy = new ObservableCollection<KeyValuePair>();
+            dict = new ObservableCollection<FlashCardSet>();
+            dictCopy = new ObservableCollection<FlashCardSet>();
             listBoxFlashcards.DataContext = dict;
             if (string.IsNullOrEmpty(Properties.Settings.Default.filePath))
                 Properties.Settings.Default.filePath = defaultFilePath;
@@ -69,16 +69,24 @@ namespace FlashCardsViewer
         }
 
         ~MainWindow()
-        {         
-            using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))          
+        {
+            //WriteListToCSVFile();        is destructor needed?   
+        }
+
+
+        /// <summary>
+        /// Writes each flashcard english and urdu value from collection into specified file.
+        /// </summary>
+        private void WriteListToCSVFile()
+        {
+            using (StreamWriter sw = new StreamWriter(Properties.Settings.Default.filePath))
             {
                 sw.WriteLine("Urdu, English");
-                foreach (KeyValuePair kvp in dict)
+                foreach (FlashCardSet kvp in dict)
                 {
                     sw.WriteLine(kvp.Value.UrduPhrase + ", " + kvp.Value.EnglishPhrase);
                 }
             }
-           
         }
 
         private void GetFlashCardsFromFile()
@@ -96,7 +104,7 @@ namespace FlashCardsViewer
                     FlashCard fc = new FlashCard();
                     fc.UrduPhrase = phrases[0];
                     fc.EnglishPhrase = phrases[1];
-                    dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
+                    dict.Add(new FlashCardSet() { Key = flashCardConstant + ++handle, Value = fc });
                 }
             }
             catch (Exception ex)
@@ -224,7 +232,7 @@ namespace FlashCardsViewer
             FlashCard fc = new FlashCard();
             fc.UrduPhrase = urduWord;
             fc.EnglishPhrase = englishWord;
-            dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = fc });
+            dict.Add(new FlashCardSet() { Key = flashCardConstant + ++handle, Value = fc });
             ad.Close();   
         }
 
@@ -240,13 +248,13 @@ namespace FlashCardsViewer
             dict.Remove(dict.First(x => x.Key == key));
 
             
-            KeyValuePair[] dictCopy=new KeyValuePair[dict.Count()];
+            FlashCardSet[] dictCopy=new FlashCardSet[dict.Count()];
             dict.CopyTo(dictCopy,0);
             dict.Clear();
             handle = 0;
-            foreach(KeyValuePair kvp in dictCopy)
+            foreach(FlashCardSet kvp in dictCopy)
             {
-                dict.Add(new KeyValuePair() { Key = flashCardNumber + ++handle, Value = new FlashCard() { UrduPhrase = kvp.Value.UrduPhrase, EnglishPhrase = kvp.Value.EnglishPhrase } });
+                dict.Add(new FlashCardSet() { Key = flashCardConstant + ++handle, Value = new FlashCard() { UrduPhrase = kvp.Value.UrduPhrase, EnglishPhrase = kvp.Value.EnglishPhrase } });
                 
             }
             this.txtBlockCardData.Visibility = Visibility.Hidden;
@@ -261,7 +269,7 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }
-            KeyValuePair kvp = listBoxFlashcards.SelectedItem as KeyValuePair;                        
+            FlashCardSet kvp = listBoxFlashcards.SelectedItem as FlashCardSet;                        
             EditWindow ew = new EditWindow(kvp);
             ew.Show();
 
@@ -286,7 +294,8 @@ namespace FlashCardsViewer
             }
 
             SpeechSynthesizer speech = new SpeechSynthesizer();
-            KeyValuePair kvp = listBoxFlashcards.SelectedItem as KeyValuePair;
+            
+            FlashCardSet kvp = listBoxFlashcards.SelectedItem as FlashCardSet;
 
             if (urduSide)
                 speech.Speak(kvp.Value.UrduPhrase);
@@ -328,7 +337,7 @@ namespace FlashCardsViewer
                 return;
             }
 
-            KeyValuePair item = listBoxFlashcards.SelectedItem as KeyValuePair;
+            FlashCardSet item = listBoxFlashcards.SelectedItem as FlashCardSet;
             int currentPosition = dict.IndexOf(item);
             if (currentPosition == dict.Count()-1)
             {
@@ -348,7 +357,7 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }
-            KeyValuePair item = listBoxFlashcards.SelectedItem as KeyValuePair;
+            FlashCardSet item = listBoxFlashcards.SelectedItem as FlashCardSet;
             int currentPosition = dict.IndexOf(item);
             if (currentPosition == 0)
             {
@@ -387,7 +396,7 @@ namespace FlashCardsViewer
                 
             if (result==System.Windows.Forms.DialogResult.Yes)
             {
-                foreach (KeyValuePair k in dict)
+                foreach (FlashCardSet k in dict)
                 {
                     dictCopy.Add(k);
                 }
@@ -399,7 +408,7 @@ namespace FlashCardsViewer
         private void RetrieveButton_Click(object sender, RoutedEventArgs e)
         {
             if (dictCopy != null)
-               foreach(KeyValuePair x in dictCopy)
+               foreach(FlashCardSet x in dictCopy)
                {
                    dict.Add(x);
                }
@@ -502,6 +511,38 @@ namespace FlashCardsViewer
             else
             {
                 System.Windows.MessageBox.Show("word/phrase not found!");
+            }
+        }
+
+        private void SaveListButton_Click(object sender, RoutedEventArgs e)
+        {
+            WriteListToCSVFile();
+            System.Windows.MessageBox.Show("List Saved!");
+        }
+    }
+
+    /// <summary>
+    /// Object represents a key representing Flashcard Number, and value representing Flashcard object(contains urdu and english phrase strings).
+    /// </summary>
+    public class FlashCardSet
+    {
+        public string Key
+        {
+            get;
+            set;
+        }
+
+        public FlashCard Value
+        {
+            get;
+            set;
+        }
+
+        public override string ToString()
+        {
+
+            {
+                return Key;
             }
         }
     }
