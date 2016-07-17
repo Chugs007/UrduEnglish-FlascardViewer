@@ -19,9 +19,9 @@ namespace FlashCardsViewer
             set;
         }
 
-        public override string ToString()
-        {
-            return string.Format("{0}, {1}", UrduPhrase.ToString(), EnglishPhrase.ToString());
-        }
+        //public override string ToString()
+        //{
+        //    return string.Format("{0}, {1}", UrduPhrase.ToString(), EnglishPhrase.ToString());
+        //}
     }
 }

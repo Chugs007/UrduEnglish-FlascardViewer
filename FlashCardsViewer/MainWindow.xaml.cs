@@ -48,6 +48,7 @@ namespace FlashCardsViewer
         private QuizWindow qw;
         private SearchWindow sw;
         private AddWindow ad;
+        private bool wasMaximized = false;
         #endregion
         
 
@@ -169,8 +170,9 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }      
-            string lbi = listBoxFlashcards.SelectedItem.ToString();
-            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == lbi).Value.UrduPhrase : dict.Single(x => x.Key == lbi).Value.EnglishPhrase;           
+            //string lbi = listBoxFlashcards.SelectedItem.ToString();
+            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem; 
+            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == flashCardItem.Key).Value.UrduPhrase : dict.Single(x => x.Key == flashCardItem.Key).Value.EnglishPhrase;           
             this.txtBlockCardData.Visibility = Visibility.Visible;
             this.flashCardBorder.Visibility = Visibility.Visible;
             currentItem = listBoxFlashcards.SelectedItem;            
@@ -184,8 +186,9 @@ namespace FlashCardsViewer
                 e.Handled = true;            
                 return;
             }
-            string lbi = listBoxFlashcards.SelectedItem.ToString();
-            this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase.ToString();
+            //string lbi = listBoxFlashcards.SelectedItem.ToString();
+            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem; 
+            this.txtBlockCardData.Text = dict.Single(x => x.Key == flashCardItem.Key).Value.UrduPhrase.ToString();
             this.txtBlockCardData.Visibility = Visibility.Visible;
             this.flashCardBorder.Visibility = Visibility.Visible;           
         }
@@ -198,16 +201,16 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }
-            string lbi = listBoxFlashcards.SelectedItem.ToString();
-
+            //string lbi = listBoxFlashcards.SelectedItem.ToString();
+            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem; 
             if (urduSide)
             {
-                this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.EnglishPhrase.ToString();
+                this.txtBlockCardData.Text = dict.Single(x => x.Key == flashCardItem.Key).Value.EnglishPhrase.ToString();
                 urduSide = false;
             }
             else
             {
-                this.txtBlockCardData.Text = dict.Single(x => x.Key == lbi).Value.UrduPhrase.ToString();
+                this.txtBlockCardData.Text = dict.Single(x => x.Key == flashCardItem.Key).Value.UrduPhrase.ToString();
                 urduSide = true;
             }
             this.listBoxFlashcards.Focus();
@@ -244,8 +247,9 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }
-            string key = listBoxFlashcards.SelectedItem.ToString();
-            dict.Remove(dict.First(x => x.Key == key));
+            //string key = listBoxFlashcards.SelectedItem.ToString();
+            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem; 
+            dict.Remove(dict.First(x => x.Key == flashCardItem.Key));
 
             
             FlashCardSet[] dictCopy=new FlashCardSet[dict.Count()];
@@ -278,10 +282,11 @@ namespace FlashCardsViewer
 
         void ew_ApplyChangeEvent(string text1, string text2)
         {
-            string key = listBoxFlashcards.SelectedItem.ToString();
-            dict.Single(x => x.Key == key).Value.UrduPhrase = text1;
-            dict.Single(x => x.Key == key).Value.EnglishPhrase = text2;
-            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == key).Value.UrduPhrase : dict.Single(x => x.Key == key).Value.EnglishPhrase;
+            //string key = listBoxFlashcards.SelectedItem.ToString();
+            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem; 
+            dict.Single(x => x.Key == flashCardItem.Key).Value.UrduPhrase = text1;
+            dict.Single(x => x.Key == flashCardItem.Key).Value.EnglishPhrase = text2;
+            this.txtBlockCardData.Text = urduSide ? dict.Single(x => x.Key == flashCardItem.Key).Value.UrduPhrase : dict.Single(x => x.Key == flashCardItem.Key).Value.EnglishPhrase;
         }
 
         private void Button_Speak(object sender, RoutedEventArgs e)
@@ -305,28 +310,52 @@ namespace FlashCardsViewer
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            double multiplier;
             double oldHeight;
             double oldWidth;          
             oldHeight=(double)e.PreviousSize.Height;
             oldWidth = (double)e.PreviousSize.Width;
-            MainWindow mw = sender as MainWindow;
-            if (mw.WindowState==WindowState.Maximized)
-            {
-                txtBlockCardData.FontSize = 130;
-            }
+            if (oldWidth == 0)
+                return;
+         
             if (oldWidth < e.NewSize.Width || oldHeight < e.NewSize.Height)
             {
-                if (txtBlockCardData.FontSize == 130)
+               
+                multiplier = FindMultiplier(oldHeight, oldWidth, e.NewSize.Height, e.NewSize.Width);
+                txtBlockCardData.FontSize *= multiplier;
+
+                if (txtBlockCardData.FontSize >= 140)
+                {
+                    txtBlockCardData.FontSize = 140;
                     return;
-                txtBlockCardData.FontSize += 1;
+                }
+
             }
-            if (oldHeight > e.NewSize.Height || oldWidth > e.NewSize.Width)
+            else if (oldHeight > e.NewSize.Height || oldWidth > e.NewSize.Width)
             {
-                if (txtBlockCardData.FontSize == 78)
+              
+                multiplier = FindMultiplier(oldHeight, oldWidth, e.NewSize.Height, e.NewSize.Width);
+                txtBlockCardData.FontSize *= multiplier;
+
+                if (txtBlockCardData.FontSize <= 78)
+                {
+                    txtBlockCardData.FontSize = 78;
                     return;
-                txtBlockCardData.FontSize -= 1;
+                }          
             }
         } 
+
+        private double FindMultiplier(double oldHeight, double oldWidth, double newHeight, double newWidth)
+        {
+          
+            double oldArea = oldHeight * oldWidth;
+            double newArea = newHeight * newWidth;
+
+            double multiplier = newArea / oldArea;
+           
+            return multiplier;
+
+        }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
@@ -538,12 +567,12 @@ namespace FlashCardsViewer
             set;
         }
 
-        public override string ToString()
-        {
+        //public override string ToString()
+        //{
 
-            {
-                return Key;
-            }
-        }
+        //    {
+        //        return Key;
+        //    }
+        //}
     }
 }
