@@ -31,7 +31,7 @@ namespace FlashCardsViewer
         {            
             if (AddFlashCardEvent != null)
                 AddFlashCardEvent(this.txtBoxUrduWord.Text, this.txtBoxEnglishWord.Text);
-            this.Close();
+            
         }
     }
 }
