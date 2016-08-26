@@ -27,6 +27,7 @@ namespace FlashCardsViewer
         private Dictionary<string, string> flashCards;
         private SolidColorBrush correctAnswerBrush = new SolidColorBrush(Colors.Transparent);
         private SolidColorBrush wrongAnswerBrush = new SolidColorBrush(Colors.Red);
+        private const string answerstring = "textboxAnswer";
         private int numberCorrect = 0;
 
         public QuizWindow()
@@ -189,6 +190,31 @@ namespace FlashCardsViewer
             {
                 GenerateRandomCardsEvent();
             }
+        }
+
+        private void ShowAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            if (flashCards == null)
+            {
+                MessageBox.Show("Must generate quiz first!");
+                return;
+            }
+            for (int i = 0; i < flashCards.Count; i++)
+            {
+                TextBox tb = stackPanelTextBoxes.Children[i] as TextBox;
+                tb.Text = flashCards.ElementAt(i).Value;
+            }            
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var child in stackPanelTextBoxes.Children)
+            {
+                TextBox tb = child as TextBox;
+                tb.Text = string.Empty;
+            }
+
+            ShowStatusImage = false;
         }  
     }
 
