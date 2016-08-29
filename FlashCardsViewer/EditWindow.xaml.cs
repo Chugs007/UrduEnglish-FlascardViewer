@@ -26,6 +26,15 @@ namespace FlashCardsViewer
             InitializeComponent();
             this.txtBoxUrduWord.Text = kvp.Value.UrduPhrase;
             this.txtBoxEnglishWord.Text = kvp.Value.EnglishPhrase;
+            this.KeyDown += EditWindow_KeyDown;
+        }
+
+        void EditWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
         }
 
         private void Button_Apply(object sender, RoutedEventArgs e)

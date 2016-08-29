@@ -66,7 +66,46 @@ namespace FlashCardsViewer
             listBoxFlashcards.DataContext = dict;
             if (string.IsNullOrEmpty(Properties.Settings.Default.filePath))
                 Properties.Settings.Default.filePath = defaultFilePath;
-            Properties.Settings.Default.Save();                     
+            Properties.Settings.Default.Save();
+            this.KeyDown += MainWindow_KeyDown;         
+        }
+
+        void MainWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.A)
+            {
+                Button_AddFlashCard(sender, e);
+            }
+            if (e.Key == Key.D)
+            {
+                Button_DeleteFlascard(sender, e);
+            }
+            if (e.Key == Key.E)
+            {
+                Button_Edit(sender, e);
+            }
+            if (e.Key == Key.F)
+            {
+                Button_FlipFlashCard(sender, e);
+            }
+            if (e.Key ==Key.N)
+            {
+                NextButton_Click(sender, e);
+            }
+            if (e.Key == Key.P)
+            {
+                PreviousButton_Click(sender, e);
+            }
+            if (e.Key == Key.H)
+            {
+                Button_Speak(sender, e);
+            }
+            if (e.Key == Key.R)
+            {
+                RandomButton_Click(sender, e);
+            }
+
+            
         }
 
         ~MainWindow()
@@ -213,9 +252,11 @@ namespace FlashCardsViewer
                 this.txtBlockCardData.Text = dict.Single(x => x.Key == flashCardItem.Key).Value.UrduPhrase.ToString();
                 urduSide = true;
             }
-            this.listBoxFlashcards.Focus();
+           // this.listBoxFlashcards.Focus();
       
         }
+
+        
 
         private void Button_AddFlashCard(object sender, RoutedEventArgs e)
         {
@@ -248,21 +289,25 @@ namespace FlashCardsViewer
                 return;
             }
             //string key = listBoxFlashcards.SelectedItem.ToString();
-            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem; 
-            dict.Remove(dict.First(x => x.Key == flashCardItem.Key));
-
-            
-            FlashCardSet[] dictCopy=new FlashCardSet[dict.Count()];
-            dict.CopyTo(dictCopy,0);
-            dict.Clear();
-            handle = 0;
-            foreach(FlashCardSet kvp in dictCopy)
+            MessageBoxResult mbr=  System.Windows.MessageBox.Show("Are you sure you want to delete this item?","Delete Button",MessageBoxButton.YesNo);
+            if (mbr == MessageBoxResult.Yes)
             {
-                dict.Add(new FlashCardSet() { Key = flashCardConstant + ++handle, Value = new FlashCard() { UrduPhrase = kvp.Value.UrduPhrase, EnglishPhrase = kvp.Value.EnglishPhrase } });
-                
+                FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem;
+                dict.Remove(dict.First(x => x.Key == flashCardItem.Key));
+
+
+                FlashCardSet[] dictCopy = new FlashCardSet[dict.Count()];
+                dict.CopyTo(dictCopy, 0);
+                dict.Clear();
+                handle = 0;
+                foreach (FlashCardSet kvp in dictCopy)
+                {
+                    dict.Add(new FlashCardSet() { Key = flashCardConstant + ++handle, Value = new FlashCard() { UrduPhrase = kvp.Value.UrduPhrase, EnglishPhrase = kvp.Value.EnglishPhrase } });
+
+                }
+                this.txtBlockCardData.Visibility = Visibility.Hidden;
+                this.flashCardBorder.Visibility = Visibility.Hidden;
             }
-            this.txtBlockCardData.Visibility = Visibility.Hidden;
-            this.flashCardBorder.Visibility = Visibility.Hidden;           
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)

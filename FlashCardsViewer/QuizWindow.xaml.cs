@@ -32,7 +32,16 @@ namespace FlashCardsViewer
 
         public QuizWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            this.KeyDown += QuizWindow_KeyDown;
+        }
+
+        void QuizWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
         }
 
         public static readonly DependencyProperty ShowStatusImageProperty = DependencyProperty.Register("ShowStatusImage", typeof(bool), typeof(QuizWindow), new PropertyMetadata(false));

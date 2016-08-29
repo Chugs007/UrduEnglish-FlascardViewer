@@ -24,8 +24,19 @@ namespace FlashCardsViewer
 
         public AddWindow()
         {
-            InitializeComponent();                     
+            InitializeComponent();
+            this.KeyDown += AddWindow_KeyDown;         
         }
+
+        void AddWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
+        }
+
+
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {            

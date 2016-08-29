@@ -26,6 +26,15 @@ namespace FlashCardsViewer
         public SearchWindow()
         {
             InitializeComponent();
+            this.KeyDown += SearchWindow_KeyDown;
+        }
+
+        void SearchWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

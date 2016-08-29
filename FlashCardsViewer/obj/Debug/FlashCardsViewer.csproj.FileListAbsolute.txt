@@ -49,3 +49,4 @@ C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsV
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.g.resources
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.Properties.Resources.resources
 C:\Users\Omar\Documents\Visual Studio 2013\Projects\FlashCardsViewer\FlashCardsViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csproj.GenerateResource.Cache
+C:\Users\ochug_000\Documents\Visual Studio 2013\Projects\UrduEnglish-FlashcardViewer\FlashCardsViewer\obj\Debug\FlashCardsViewer.csprojResolveAssemblyReference.cache
