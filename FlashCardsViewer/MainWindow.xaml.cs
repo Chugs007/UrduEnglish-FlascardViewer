@@ -39,28 +39,26 @@ namespace FlashCardsViewer
         private const string flashCardConstant = "FlashCard #"; //represents a flashcard by what number it is
         private const string flashCardNotSelected = "No Flash Card Selected!!";
         private bool urduSide = true; //denotes whether the urdu side is showing or english side is
-        private int handle = 0; //represents position inside collection
-        private MediaPlayer mp;       
+        private int handle = 0; //represents position inside collection            
         private ObservableCollection<FlashCardSet> dict; //collection of key values
         private object currentItem;
         private ObservableCollection<FlashCardSet> dictCopy;
         private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
         private QuizWindow qw;
         private SearchWindow sw;
-        private AddWindow ad;
+        private AddWindow ad;       
         private bool wasMaximized = false;
         #endregion
         
 
         public MainWindow()
         {
-            SplashScreen sc = new SplashScreen(@"Resources\pakistan_splash2.jpg");
+            SplashScreen sc = new SplashScreen(@"Resources\pakistan_splash2.jpg");            
             sc.Show(false);
             sc.Close(TimeSpan.FromSeconds(3));
             System.Threading.Thread.Sleep(3000);
             sc = null;
-            InitializeComponent();
-            mp = new MediaPlayer();
+            InitializeComponent();            
             dict = new ObservableCollection<FlashCardSet>();
             dictCopy = new ObservableCollection<FlashCardSet>();
             listBoxFlashcards.DataContext = dict;
@@ -84,9 +82,9 @@ namespace FlashCardsViewer
             {
                 Button_Edit(sender, e);
             }
-            if (e.Key == Key.F)
+            if (e.Key == Key.O)
             {
-                Button_FlipFlashCard(sender, e);
+                flipcard();       
             }
             if (e.Key ==Key.N)
             {
@@ -104,7 +102,26 @@ namespace FlashCardsViewer
             {
                 RandomButton_Click(sender, e);
             }
-
+            if (e.Key == Key.T)
+            {
+                FirstButton_Click(sender, e);
+            }
+            if (e.Key == Key.B)
+            {
+                LastButton_Click(sender, e);
+            }
+            if (e.Key == Key.S)
+            {
+                SearchButton_Click(sender, e);
+            }
+            if (e.Key ==Key.Q)
+            {
+                TakeQuizButton_Click(sender, e);
+            }
+            if (e.Key == Key.V)
+            {
+                SaveListButton_Click(sender, e);
+            }
             
         }
 
@@ -203,7 +220,7 @@ namespace FlashCardsViewer
         }
 
         private void listBoxFlashcards_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        {          
             if (listBoxFlashcards.SelectedItem ==null)
             {
                 e.Handled = true;
@@ -240,8 +257,19 @@ namespace FlashCardsViewer
                 e.Handled = true;
                 return;
             }
+            flipcard();
+        }
+
+        private void flipcard()
+        {
+       
             //string lbi = listBoxFlashcards.SelectedItem.ToString();
-            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem; 
+            if (listBoxFlashcards.SelectedItem == null)
+            {
+                System.Windows.Forms.MessageBox.Show(flashCardNotSelected);               
+                return;
+            }
+            FlashCardSet flashCardItem = (FlashCardSet)listBoxFlashcards.SelectedItem;
             if (urduSide)
             {
                 this.txtBlockCardData.Text = dict.Single(x => x.Key == flashCardItem.Key).Value.EnglishPhrase.ToString();
@@ -252,11 +280,8 @@ namespace FlashCardsViewer
                 this.txtBlockCardData.Text = dict.Single(x => x.Key == flashCardItem.Key).Value.UrduPhrase.ToString();
                 urduSide = true;
             }
-           // this.listBoxFlashcards.Focus();
-      
+            this.listBoxFlashcards.Focus();
         }
-
-        
 
         private void Button_AddFlashCard(object sender, RoutedEventArgs e)
         {
@@ -592,6 +617,57 @@ namespace FlashCardsViewer
         {
             WriteListToCSVFile();
             System.Windows.MessageBox.Show("List Saved!");
+        }
+
+        private void buttonMouseEnter(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button b = sender as System.Windows.Controls.Button;
+            string buttonname = b.Content.ToString();
+            switch(buttonname)
+            {
+                case "Add Card":
+                    b.ToolTip = "Shortcut key -> A";
+                    break;
+                case "Delete":
+                    b.ToolTip = "Shortcut key -> D";
+                    break;
+                case "Edit":
+                    b.ToolTip = "Shortcut key -> E";
+                    break;
+                case "Flip Card":
+                    b.ToolTip = "Shortcut key -> O";
+                    break;
+                case "Hear Phrase":
+                    b.ToolTip = "Shortcut key -> H";
+                    break;
+                case "Next Card":
+                    b.ToolTip = "Shortcut key -> N";
+                    break;
+                case "Previous Card":
+                    b.ToolTip = "Shortcut key -> P";
+                    break;
+                case "Random Card":
+                    b.ToolTip = "Shortcut key -> R";
+                    break;
+                case "First Card":
+                    b.ToolTip = "Shortcut key -> T";
+                    break;
+                case "Last Card":
+                    b.ToolTip = "Shortcuty key -> B";
+                    break;
+                case "Take Quiz":
+                    b.ToolTip = "Shortcut key -> Q";
+                    break;
+                case "Save List":
+                    b.ToolTip = "Shortcuty key -> V";
+                    break;
+                case "Search":
+                    b.ToolTip = "Shortcut key -> S";
+                    break;
+                default:
+                    break;  
+
+            }
         }
     }
 
