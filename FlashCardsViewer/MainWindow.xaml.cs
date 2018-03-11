@@ -125,10 +125,7 @@ namespace FlashCardsViewer
             
         }
 
-        ~MainWindow()
-        {
-            //WriteListToCSVFile();        is destructor needed?   
-        }
+   
 
 
         /// <summary>
