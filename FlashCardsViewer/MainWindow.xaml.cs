@@ -43,7 +43,7 @@ namespace FlashCardsViewer
         private ObservableCollection<FlashCardSet> dict; //collection of key values
         private object currentItem;
         private ObservableCollection<FlashCardSet> dictCopy;
-        private string defaultFilePath = @"C:\Users\" + Environment.UserName + @"\Desktop\urdu_to_english.csv";
+        private string defaultFilePath = "urdu_to_english.csv";
         private QuizWindow qw;
         private SearchWindow sw;
         private AddWindow ad;       
