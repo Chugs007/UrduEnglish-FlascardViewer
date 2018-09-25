@@ -27,7 +27,7 @@ namespace FlashCardsViewer
         private Dictionary<string, string> flashCards;
         private SolidColorBrush correctAnswerBrush = new SolidColorBrush(Colors.Transparent);
         private SolidColorBrush wrongAnswerBrush = new SolidColorBrush(Colors.Red);
-        private const string answerstring = "textboxAnswer";
+        private const string DEFAULTANSWER= "textboxAnswer";
         private int numberCorrect = 0;
 
         public QuizWindow()
@@ -195,10 +195,7 @@ namespace FlashCardsViewer
                 TextBox tb = child as TextBox;
                 tb.Background = correctAnswerBrush;
             }
-            if (GenerateRandomCardsEvent != null)
-            {
-                GenerateRandomCardsEvent();
-            }
+            GenerateRandomCardsEvent?.Invoke();
         }
 
         private void ShowAnswer_Click(object sender, RoutedEventArgs e)

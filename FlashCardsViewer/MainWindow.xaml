@@ -63,8 +63,8 @@
             </Grid.ColumnDefinitions>
             <!--Button Content="Showflashcard" x:Name="ShowFlashButton"  Grid.Column="0" MinHeight="30" MinWidth="90" Click="Button_ShowFlashCard">-->
             <Button Content="Add Card"  Grid.Row="0" x:Name="AddCardButton" Style="{StaticResource ButtonStyle}"    Click="Button_AddFlashCard" ></Button>
-            <Button Content="Delete"  Grid.Row="1" x:Name="DeleteButton" Style="{StaticResource ButtonStyle}" Click="Button_DeleteFlascard"></Button>
-            <Button Content="Edit" Grid.Row="2" x:Name="EditButton"  Style="{StaticResource ButtonStyle}" Click="Button_Edit"></Button>
+            <Button Content="Delete Card"  Grid.Row="1" x:Name="DeleteButton" Style="{StaticResource ButtonStyle}" Click="Button_DeleteFlascard"></Button>
+            <Button Content="Edit Card" Grid.Row="2" x:Name="EditButton"  Style="{StaticResource ButtonStyle}" Click="Button_Edit"></Button>
             <Button  Content="Flip Card" x:Name="FlipButton" Grid.Row="3" Style="{StaticResource ButtonStyle}" Click="Button_FlipFlashCard"></Button>
             <Button Content="Hear Phrase" Grid.Row="6" x:Name="HearButton"  Style="{StaticResource ButtonStyle}"  Click="Button_Speak"/>
             <Button Content="Next Card" Grid.Row="4" x:Name="NextButton" Style="{StaticResource ButtonStyle}" Click="NextButton_Click"/>

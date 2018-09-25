@@ -39,8 +39,7 @@ namespace FlashCardsViewer
 
         private void Button_Apply(object sender, RoutedEventArgs e)
         {
-            if (ApplyChangeEvent != null)
-                ApplyChangeEvent(this.txtBoxUrduWord.Text,this.txtBoxEnglishWord.Text);
+            ApplyChangeEvent?.Invoke(this.txtBoxUrduWord.Text, this.txtBoxEnglishWord.Text);
             this.Close();
         }
 

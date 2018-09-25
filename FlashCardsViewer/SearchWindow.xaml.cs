@@ -44,10 +44,7 @@ namespace FlashCardsViewer
                 MessageBox.Show("No text entered. Please enter a english word/phrase.");
                 return;
             }
-            if (searchforcardevent!= null)
-            {
-                searchforcardevent(searchTextBox.Text);                
-            }
+            searchforcardevent?.Invoke(searchTextBox.Text);
         }
 
 
